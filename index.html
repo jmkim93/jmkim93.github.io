@@ -27,6 +27,13 @@
 			.navbar-inverse .navbar-nav>li>a {color: #e0e0e0;}
 		}
 	</style>
+<!-- 	Last update timestamp -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+		var lastUpdatedElem = document.getElementById("last-updated");
+		if (lastUpdatedElem) {lastUpdatedElem.textContent = "Last Updated: " + document.lastModified;}
+		});
+	</script>
 </head>
 
 <body>
@@ -287,6 +294,8 @@
 
 <!-- Other people may like it too! -->
 <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> 
+
+<footer> <p id="last-updated"></p> </footer>
 	
 </body>
 
