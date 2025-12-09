@@ -60,8 +60,8 @@ params:
           imageWidth: 160
           imageHeight: 160
           buttons:
-            - name: Papers
-              url: papers/
+            - name: Publications
+              url: publications/
             - name: Data
               url: data/
             - name: Books
