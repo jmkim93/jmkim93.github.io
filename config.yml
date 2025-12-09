@@ -55,23 +55,23 @@ params:
     profileMode:
           enabled: true
           title: Jungmin Kim
-          subtitle: "I am a postdoctoral research at the University of Wisconsin-Madison."
+          subtitle: "I am a postdoctoral research at the University of Wisconsin-Madison. This page is under construction!"
           imageUrl: "picture.jpeg"
           imageWidth: 160
           imageHeight: 160
           buttons:
-            - name: Publications
-              url: publications/
-            - name: Data
-              url: data/
-            - name: Books
-              url: books/
-            - name: Courses
-              url: courses/
-            - name: Tags
-              url: tags/
-            - name: Archive
-              url: archive/
+            # - name: Publications
+            #   url: publications/
+            # - name: Data
+            #   url: data/
+            # - name: Books
+            #   url: books/
+            # - name: Courses
+            #   url: courses/
+            # - name: Tags
+            #   url: tags/
+            # - name: Archive
+            #   url: archive/
             # - name: Blog
             #   url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
             - name: CV.pdf
@@ -80,8 +80,8 @@ params:
     socialIcons:
         - name: Email
           url: mailto:jkim2325@wisc.edu
-        - name: Location
-          url: location/
+        # - name: Location
+        #   url: location/
         # - name: Office Hours
         #   url: officehours/
         - name: Google Scholar
