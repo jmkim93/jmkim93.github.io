@@ -15,12 +15,9 @@ menu:
         # - name: Books
         #   url: books/
         #   weight: 5 
-        - name: Papers
-          url: papers/
-          weight: 2
-        # - name: Courses
-        #   url: courses/
-        #   weight: 3
+        - name: Publications
+          url: pubs/
+          weight: 1
         # - name: Data
         #   url: data/
         #   weight: 4 
@@ -60,8 +57,8 @@ params:
           imageWidth: 160
           imageHeight: 160
           buttons:
-            # - name: Publications
-            #   url: publications/
+            - name: Publications
+              url: pubs/
             # - name: Data
             #   url: data/
             # - name: Books
@@ -80,8 +77,8 @@ params:
     socialIcons:
         - name: Email
           url: mailto:jkim2325@wisc.edu
-        # - name: Location
-        #   url: location/
+        - name: Location
+          url: location/
         # - name: Office Hours
         #   url: officehours/
         - name: Google Scholar
