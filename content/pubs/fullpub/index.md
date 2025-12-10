@@ -11,7 +11,7 @@ summary: " "
 
 #### Preprints
 
-+ **Manipulating Spatiotemporal Degress of Freedom for Photonic Switching Devices: Theoretical and Machine-Learning Approaches** \
++ **Manipulating Spatiotemporal Degrees of Freedom for Photonic Switching Devices: Theoretical and Machine-Learning Approaches** \
 Jungmin Kim \
 Seoul National University (2023). [Database](https://www.riss.kr/link?id=T16750284)
 <!-- ![image](toc/natphys.png) -->
