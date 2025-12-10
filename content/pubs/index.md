@@ -2,7 +2,7 @@
 title: "Publications"
 date: 2025-12-08
 hidemeta: true
-description: "Jungmin Kim's mailing and office addresses at the Institute of Romance Philology."
+description: "Jungmin Kim's publication."
 
 ----
 
