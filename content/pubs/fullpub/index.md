@@ -1,5 +1,5 @@
 ---
-title: "Publicaton List test"
+title: "Publicaton List"
 author: "Jungmin Kim"
 hidemeta: true
 hideSummary: true
