@@ -55,7 +55,7 @@ params:
     profileMode:
           enabled: true
           title: Jungmin Kim
-          subtitle: "Postdoctoral researcher at the University of Wisconsin-Madison working on photonics with focus on optical computing applications."
+          subtitle: "I am a postdoctoral research at the University of Wisconsin-Madison. This page is under construction!"
           imageUrl: "picture.jpeg"
           imageWidth: 160
           imageHeight: 160

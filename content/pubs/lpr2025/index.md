@@ -39,7 +39,7 @@ Systolic arrays have proven to be highly efficient for parallelized matrix–mat
     ISSN = {1863-8899},
     url = {http://dx.doi.org/10.1002/lpor.202501995},
     DOI = {10.1002/lpor.202501995},
-    journal = {Laser \& Photonics Reviews},
+    journal = {Laser \&; Photonics Reviews},
     publisher = {Wiley},
     author = {Kim,  Jungmin and Zhou,  Qingyi and Yu,  Zongfu},
     year = {2025},

@@ -1,9 +1,9 @@
 ---
-title: "Publicaton List"
+title: "Full publication list"
 author: "Jungmin Kim"
+# date: 2025-12-08
 hidemeta: true
-hideSummary: true
-weight: 1
+summary: " " 
 # description: "Jungmin Kim's publication."
 
 
