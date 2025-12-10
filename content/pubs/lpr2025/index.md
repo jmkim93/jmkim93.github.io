@@ -8,10 +8,12 @@ summary: "Laser & Photonics Reviews, e01995 (2025)"
 cover:
     image: "toc.jpg"
     alt: "Photonic Systolic Array"
-    relative: true
+    relative: False
 editPost:
     URL: "https://doi.org/10.1002/lpor.202501995"
     Text: "Laser & Photonics Reviews, e01995 (2025)"
+hidesummary: false
+hidemeta: false
 
 ---
 
@@ -39,7 +41,7 @@ Systolic arrays have proven to be highly efficient for parallelized matrix–mat
     ISSN = {1863-8899},
     url = {http://dx.doi.org/10.1002/lpor.202501995},
     DOI = {10.1002/lpor.202501995},
-    journal = {Laser \&; Photonics Reviews},
+    journal = {Laser \& Photonics Reviews},
     publisher = {Wiley},
     author = {Kim,  Jungmin and Zhou,  Qingyi and Yu,  Zongfu},
     year = {2025},

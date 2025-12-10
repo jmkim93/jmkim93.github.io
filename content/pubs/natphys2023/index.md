@@ -12,6 +12,7 @@ cover:
 editPost:
     URL: "https://doi.org/10.1038/s41567-023-01962-3"
     Text: "Nature Physics 19, 726-732 (2023)"
+hidesummary: false
 
 ---
 
