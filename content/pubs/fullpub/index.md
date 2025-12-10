@@ -84,17 +84,12 @@ Nanophotonics 11, 2763-2778 (2022). [Publisher](https://doi.org/10.1515/nanoph-2
 
 #### Conference Presentations
 
-+ **Incoherent meta-imaging system for noise-robust object recognition** \
-[CLEO-PR 2024](https://opg.optica.org/abstract.cfm?URI=CLEOPR-2024-Mo1A_4)
++ Incoherent meta-imaging system for noise-robust object recognition, [CLEO-PR 2024](https://opg.optica.org/abstract.cfm?URI=CLEOPR-2024-Mo1A_4).
 
-+ **Design of Correlated Photonic Time Disorder for Unidirectional Scattering**\
-[APC 2023](https://doi.org/10.1364/NOMA.2023.NoTu3C.4)
++ Design of Correlated Photonic Time Disorder for Unidirectional Scattering, [APC 2023](https://doi.org/10.1364/NOMA.2023.NoTu3C.4).
 
-+ **Data-Driven Engineering of Active Photonic Disorder**\
-[FiO+LS 2022](https://doi.org/10.1364/FIO.2022.JW4A.20)
++ Data-Driven Engineering of Active Photonic Disorder, [FiO+LS 2022](https://doi.org/10.1364/FIO.2022.JW4A.20).
 
-+ **Molecular Dynamics for Microscopic Analysis of Refractive Index in Amorphous Hafnium Oxides**\
-[FiO+LS 2022](https://doi.org/10.1364/FIO.2022.FW7C.5)
++ Molecular Dynamics for Microscopic Analysis of Refractive Index in Amorphous Hafnium Oxides, [FiO+LS 2022](https://doi.org/10.1364/FIO.2022.FW7C.5).
 
-+ **Neural-Network-based Design of Tunable Multilayer Films**\
-[APC 2021](https://doi.org/10.1364/IPRSN.2021.JW4B.3)
++ Neural-Network-based Design of Tunable Multilayer Films, [APC 2021](https://doi.org/10.1364/IPRSN.2021.JW4B.3).
