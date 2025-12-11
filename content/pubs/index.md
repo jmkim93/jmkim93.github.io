@@ -11,11 +11,11 @@ description: "Jungmin Kim's publication."
 ### Research Highlights
 
 #### Optical Computing
-[![Optical Computing](/papers/toc_lpr.jpg)](optical_computing)
+[![Optical Computing](/papers/toc_lpr.jpg)](optical_computing/)
 
 
 #### Disordered Photonics
-[![Optical Computing](/papers/toc_natphys.jpg)](disorder)
+[![Optical Computing](/papers/toc_natphys.jpg)](disorder/)
 
 
 <!-- <a href="optical_computing" class="pub-card">
