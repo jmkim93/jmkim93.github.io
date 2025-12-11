@@ -1,6 +1,6 @@
 ---
 title: "Disordered Photonics" 
-date: 2025-12-10
+date: 2025-12-01
 # aliases: 
 #     - /old_url.html
 # tags: ["keyword 1","keyword 2","keyword 3","keyword 4","keyword 5","keyword 6","keyword 7","keyword 8"]
