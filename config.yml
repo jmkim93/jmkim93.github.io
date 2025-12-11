@@ -38,7 +38,7 @@ params:
     DateFormat: "January 2006"
     defaultTheme: auto
     hideFooter: false
-    disableThemeToggle: true
+    disableThemeToggle: false
     ShowShareButtons: false
     ShowReadingTime: false
     disableSpecial1stPost: true
@@ -81,12 +81,14 @@ params:
             #   url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
             - name: CV
               url: cv.pdf
+            - name: Contact
+              url: contact/
 
     socialIcons:
         # - name: Email
         #   url: mailto:jkim2325@wisc.edu
-        - name: contact
-          url: contact/
+        # - name: contact
+        #   url: contact/
         # - name: Office Hours
         #   url: officehours/
         - name: Google Scholar
@@ -99,8 +101,6 @@ params:
           url: https://orcid.org/0000-0001-8567-5338
         - name: linkedin
           url: https://www.linkedin.com/in/jmkim93
-        # - name: cv
-        #   url: personal/cv.pdf/
         # - name: Substack
         #   url: https://pmichaillat.substack.com
         # - name: YouTube
