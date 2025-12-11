@@ -33,7 +33,7 @@ menu:
 
 params:
     description: "This website hosts Jungmin Kim's research papers, books, course materials, data, curriculum vitae, and contact information."
-    author: Moritz-Maria von Igelfeld
+    author: "Jungmin Kim"
     # googleAnalyticsID: "G-XXXXX"
     DateFormat: "January 2006"
     defaultTheme: auto
@@ -49,7 +49,7 @@ params:
     ShowAllPagesInArchive: false
     MainSections: ["pubs"]
     ShowToc: false
-    disableScrollToTop: true
+    disableScrollToTop: false
     TocOpen: true
     ShowWordCount: false
     UseHugoToc: true
