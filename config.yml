@@ -19,7 +19,7 @@ menu:
           url: pubs/
           weight: 2
         - name: CV
-          url: CV.pdf
+          url: /CV.pdf
           weight: 3
         # - name: Books
         #   url: books/
@@ -80,7 +80,7 @@ params:
             # - name: Blog
             #   url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
             - name: CV
-              url: CV.pdf
+              url: /CV.pdf
 
     socialIcons:
         # - name: Email
