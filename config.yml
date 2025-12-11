@@ -19,7 +19,7 @@ menu:
           url: pubs/
           weight: 2
         - name: CV
-          url: personal/cv.pdf
+          url: cv.pdf
         #   weight: 3
         # - name: Books
         #   url: books/
@@ -59,7 +59,7 @@ params:
           enabled: true
           title: Jungmin Kim
           subtitle: Photonics researcher @ UW-Madison
-          imageUrl: "personal/picture.jpeg"
+          imageUrl: "picture.jpeg"
           imageWidth: 160
           imageHeight: 160
           buttons:
@@ -80,7 +80,7 @@ params:
             # - name: Blog
             #   url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
             - name: CV
-              url: personal/cv.pdf
+              url: cv.pdf
 
     socialIcons:
         # - name: Email
