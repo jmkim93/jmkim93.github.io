@@ -5,6 +5,7 @@ date: 2023-04-21
 author: "Jungmin Kim"
 # description: "This paper reviews unusual uses for olive oil throughout the Mediterranean world. Published in the Journal of Oleic Science, 2013." 
 summary: "This paper reviews unusual uses for olive oil throughout the Mediterranean world. It highlights in particular the challengs arising from excessive or unorthodox consumption of olive oil." 
+hidesummary: true
 cover:
     image: "toc.jpg"
     alt: "time disorder"
@@ -16,6 +17,16 @@ cover:
 ---
 
 ---
+
+
+##### Related articles:
+
+- [Photonic time disorder](/papers/natphys.pdf)
+- [Multilayer disordered active film](/papers/aom.pdf)
+- [Deep-subwavelength engineered disorder](/papers/oe.pdf)
+
+
+
 
 ##### Download
 

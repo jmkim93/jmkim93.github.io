@@ -12,12 +12,15 @@ taxonomies:
 
 menu:
     main:
+        - name: Research
+          url: research/
+          weight: 1 
         - name: Publications
           url: pubs/
-          weight: 1
-        - name: CV.pdf
-          url: CV_Jungmin_Kim.pdf
           weight: 2
+        - name: CV
+          url: CV.pdf
+          weight: 3
         # - name: Books
         #   url: books/
         #   weight: 5 
@@ -60,6 +63,8 @@ params:
           imageWidth: 160
           imageHeight: 160
           buttons:
+            - name: Research
+              url: research/
             - name: Publications
               url: pubs/
             # - name: Books

@@ -9,6 +9,7 @@ cover:
     image: "toc.jpg"
     alt: "systolic array"
     relative: true
+hidesummary: true
 # editPost:
 #     URL: "https://github.com/pmichaillat/hugo-website"
 #     Text: "Journal of Oleic Science"
@@ -16,6 +17,13 @@ cover:
 ---
 
 ---
+
+##### Related articles:
+
+- [Photonic systolic array](/papers/lpr.pdf)
+- [Noise-resilient meta-imaging system](/papers/acsphoton.pdf)
+- [Topological all-optical memory](/papers/aem.pdf)
+
 
 ##### Download
 

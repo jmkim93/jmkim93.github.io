@@ -1,5 +1,5 @@
 ---
-title: "Publicaton"
+title: "Publicatons"
 author: "Jungmin Kim"
 hidemeta: true
 hideSummary: true
@@ -8,49 +8,7 @@ description: "Jungmin Kim's publication."
 ---
 
 ---
-### Research Highlights
 
-#### Optical Computing
-[![Optical Computing](/papers/toc_lpr.jpg)](optical_computing/)
-
-
-#### Disordered Photonics
-[![Optical Computing](/papers/toc_natphys.jpg)](disorder/)
-
-
-<!-- <a href="optical_computing" class="pub-card">
-  <div style="display:flex; gap:16px; align-items:center;">
-    <img src="/papers/toc_lpr.jpg"
-         alt="TOC figure"
-         style="width:50%; border-radius:6px; flex-shrink:0;">
-    <div style="display:flex; flex-direction:column; align-items:flex-start; text-align:left;">
-      <strong>Optical Computing</strong><br>
-      <span>
-        <em>Laser & Photonics Reviews</em> (2025) <br>
-        <em>ACS Photonics</em> (2025) <br>
-      </span>
-    </div>
-  </div>
-</a>
-
-<a href="disorder" class="pub-card">
-  <div style="display:flex; gap:16px; align-items:center;">
-    <img src="/papers/toc_natphys.jpg"
-         alt="TOC figure"
-         style="width:50%; border-radius:6px; flex-shrink:0;">
-    <div style="display:flex; flex-direction:column; align-items:flex-start; text-align:left;">
-      <strong>Disordered Photonics</strong><br>
-      <span>
-        <em>Nature Physics</em> (2023) <br>
-        <em>Advanced Optical Materials</em> (2022) <br>
-      </span>
-    </div>
-  </div>
-</a> -->
-
-
----
-### Publication List
 #### Preprints
 
 **Manipulating Spatiotemporal Degrees of Freedom for Photonic Switching Devices: Theoretical and Machine-Learning Approaches** \
