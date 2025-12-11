@@ -75,7 +75,7 @@ params:
             # - name: Blog
             #   url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
             - name: CV
-              url: CV_Jungmin_Kim.pdf
+              url: CV.pdf
 
     socialIcons:
         # - name: Email
