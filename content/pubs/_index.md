@@ -1,3 +1,3 @@
 ## Publications
 
-Full publication list can be found [here](list).
+Full publication list can be found [here](/publist).
