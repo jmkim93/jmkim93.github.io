@@ -3,7 +3,7 @@ title: "Full publication list"
 author: "Jungmin Kim"
 hidemeta: true
 hideSummary: true
-url: /publist
+url: /publist/
 weight: 100
 description: "Jungmin Kim's publication."
 ---
