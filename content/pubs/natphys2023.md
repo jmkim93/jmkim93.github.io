@@ -6,10 +6,10 @@ tags: ["temporal", "disorder"]
 author: ["Jungmin Kim", "Dayeong Lee", "Sunkyu Yu", "Namkyoo Park"]
 description: "Paper description for search engines (less than 155 characters)" 
 summary: "Nature Physics 19, 726-732 (2023)"
-# cover:
-#     image: "/papers/toc_natphys.jpg"
-#     alt: "fig"
-#     relative: true
+cover:
+    image: "/papers/toc_natphys.jpg"
+    alt: "fig"
+    relative: true
 editPost:
     URL: "https://doi.org/10.1038/s41567-023-01962-3"
     Text: "Nature Physics"

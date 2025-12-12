@@ -12,9 +12,9 @@ taxonomies:
 
 menu:
     main:
-        - name: Research
-          url: research/
-          weight: 1
+        # - name: Research
+        #   url: research/
+          # weight: 1
         - name: Publications
           url: pubs/
           weight: 2
@@ -63,8 +63,8 @@ params:
           imageWidth: 160
           imageHeight: 160
           buttons:
-            - name: Research
-              url: research/
+            # - name: Research
+            #   url: research/
             - name: Publications
               url: pubs/
             # - name: Books
@@ -73,17 +73,15 @@ params:
             #   url: papers/
             # - name: Courses
             #   url: courses/
-            # - name: Tags
-            #   url: tags/
             # - name: Archive
             #   url: archive/
             # - name: Blog
             #   url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
-            - name: CV
+            - name: CV.pdf
               url: cv.pdf
             - name: About
               url: about/
-            - name: tags
+            - name: Tags
               url: tags/
 
     socialIcons:

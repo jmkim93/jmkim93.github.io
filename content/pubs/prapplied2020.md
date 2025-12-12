@@ -6,10 +6,10 @@ tags: ["Dirac cone", "band", "spectral engineering"]
 author: ["Jungmin Kim", "Sunkyu Yu", "Namkyoo Park"]
 # description: "Paper description for search engines (less than 155 characters)" 
 summary: "Physical Review Applied 13, 044015 (2020)"
-# cover:
-#     image: "/papers/toc_natphys.jpg"
-#     alt: "fig"
-#     relative: true
+cover:
+    image: "/papers/toc_prapplied.png"
+    alt: "fig"
+    relative: true
 editPost:
     URL: "https://doi.org/10.1103/PhysRevApplied.13.044015"
     Text: "Physical Review Applied"
