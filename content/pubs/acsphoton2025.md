@@ -42,7 +42,7 @@ During machine visual perception, the optical signal from a scene is transferred
 J. Kim et al., "Compute-First Optical Detection for Noise-Resilient Visual Perception." *ACS Photonics* 12: 1137-1145 (2025). https://doi.org/10.1021/acsphotonics.4c02284.
 
 ```BibTeX
-@article{Kim2025,
+@article{Kim2025_noise,
     title = {Compute-First Optical Detection for Noise-Resilient Visual Perception},
     volume = {12},
     ISSN = {2330-4022},
