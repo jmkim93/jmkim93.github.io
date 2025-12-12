@@ -73,8 +73,6 @@ params:
             #   url: papers/
             # - name: Courses
             #   url: courses/
-            # - name: Archive
-            #   url: archive/
             # - name: Blog
             #   url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
             - name: CV.pdf
@@ -83,6 +81,8 @@ params:
               url: about/
             - name: Tags
               url: tags/
+            - name: Archive
+              url: archive/
 
     socialIcons:
         # - name: Email
