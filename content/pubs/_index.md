@@ -1,3 +1,3 @@
-## Publications
+# Publications
 
-Full publication list can be found [here](/aux/publist/).
+A complete publication list is available [here](/aux/publist/) or on [Google Scholar](https://scholar.google.com/citations?user=AGjDgr0AAAAJ&).

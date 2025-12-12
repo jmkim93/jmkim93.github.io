@@ -29,9 +29,9 @@ hideSummary: true
 
 Recently, there has been increasing interest in the temporal degree of freedom in photonics due to its analogy with spatial axes, causality and open-system characteristics. In particular, the temporal analogues of photonic crystals have allowed the design of momentum gaps and their extension to topological and non-Hermitian photonics. Although recent studies have also revealed the effect of broken discrete time-translational symmetry in view of the temporal analogy of spatial Anderson localization, the broad intermediate regime between time order and time uncorrelated disorder has not been examined. Here we theoretically investigate the inverse design of photonic time disorder to achieve optical functionalities in spatially homogeneous platforms. By developing the structure factor and order metric using causal Green’s functions for disorder in the time domain, we propose an engineered time scatterer, which provides unidirectional scattering with controlled scattering amplitudes. We also show that the order-to-disorder transition in the time domain allows the manipulation of scattering bandwidths, which makes resonance-free temporal colour filtering possible. Our work could advance optical functionalities without spatial patterning.
 
----
+<!-- ---
 
-##### Figure X:  Figure title
+##### Figure X:  Figure title -->
 
 <!-- ![](figurex.png) -->
 

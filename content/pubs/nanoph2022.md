@@ -29,9 +29,9 @@ hideSummary: true
 
 The independent tailoring of wave quantities lays the foundation for controlling wave phenomena and designing wave devices. The concept of isospectrality, which suggests the existence of systems that provide identical spectra, has inspired a novel route to the spectrum-preserved engineering of wave–matter interactions in photonics, acoustics, and quantum mechanics. Recently, in photonics, constructing isospectral optical structures has become an emerging research topic to handle the intricate spectral responses of the systems composed of many-particles or inhomogeneous materials. The cornerstones in this field have stimulated the realization of non-Hermitian systems with real eigenspectra, one-dimensional structures exhibiting higher-dimensional physics, and novel engineering methodologies for broadband devices such as phase-matched multiplexers and multimodal lasing platforms. Here we review recent achievements based on isospectrality in photonics. We outline milestones in two different subfields of supersymmetric photonics and interdimensional isospectrality. We illustrate that isospectrality has paved the way for the independent control of wave quantities, showing great potential for the analytical and platform-transparent design of photonic systems with complex structures and materials.
 
----
+<!-- ---
 
-##### Figure X:  Figure title
+##### Figure X:  Figure title -->
 
 <!-- ![](figurex.png) -->
 

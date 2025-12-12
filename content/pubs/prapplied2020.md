@@ -29,9 +29,9 @@ hideSummary: true
 
 Band engineering near Dirac points is an emerging topic in condensed matter physics and photonics, enabling multifaceted devices of record-high conductivity and zero refractive index in both electronic and photonic structures. Recently, an extended class of Dirac cone, type I, II, or III, has attracted much attention with its controlled directionality of singular wave behaviors near the Dirac points. However, despite the significance of the discovery and applications of each type of Dirac cone, the theoretical framework and unified design structure bridging different types of Dirac cones have not been clearly elucidated. Here, we propose a universal design platform for all types of photonic Dirac cones and reveal the key parameter determining their types and transformations. Starting from the accidentally induced photonic Dirac cone, we show that the inverse design of an optical potential landscape enables the deterministic control of the spectral ordering, which leads to designer construction of each type of Dirac cone. This approach will pave the way for the design of artificial degeneracies with tunable anisotropy for general wave systems.
 
----
+<!-- ---
 
-##### Figure X:  Figure title
+##### Figure X:  Figure title -->
 
 <!-- ![](figurex.png) -->
 

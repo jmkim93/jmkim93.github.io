@@ -29,9 +29,9 @@ hideSummary: true
 
 During machine visual perception, the optical signal from a scene is transferred into the electronic domain by detectors in the form of image data, which are then processed for the extraction of visual information. In noisy environments, such as a thermal imaging system, however, the neural performance faces a significant bottleneck due to the inherent degradation of data quality upon noisy detection. Here, we propose a concept of optical signal processing before detection to address this issue. We demonstrate that spatially redistributing optical signals through a properly designed linear transformer can enhance the detection noise resilience of visual perception, as benchmarked with MNIST classification. A quantitative analysis of the relationship between signal concentration and noise robustness supports our idea with its practical implementation in an incoherent imaging system. This compute-first detection scheme can advance infrared machine vision technologies for industrial and defense applications.
 
----
+<!-- ---
 
-##### Figure X:  Figure title
+##### Figure X:  Figure title -->
 
 <!-- ![](figurex.png) -->
 

@@ -29,11 +29,10 @@ hideSummary: true
 
 Nanophotonics, which explores significant light–matter interactions at the nanoscale, has facilitated significant advancements across numerous research fields. A key objective in this area is the design of ultra-compact, high-performance nanophotonic devices to pave the way for next-generation photonics. While conventional brute-force, intuition-based forward design methods have produced successful nanophotonic solutions over the past several decades, recent developments in optimization methods and artificial intelligence offer new potential to expand these capabilities. In this review, we delve into the latest progress in the inverse design of nanophotonic devices, where AI and optimization methods are leveraged to automate and enhance the design process. We discuss representative methods commonly employed in nanophotonic design, including various meta-heuristic algorithms such as trajectory-based, evolutionary, and swarm-based approaches, in addition to adjoint-based optimization. Furthermore, we explore state-of-the-art deep learning techniques, involving discriminative models, generative models, and reinforcement learning. We also introduce and categorize several notable inverse-designed nanophotonic devices and their respective design methodologies. Additionally, we summarize the open-source inverse design tools and commercial foundries. Finally, we provide our perspectives on the current challenges of inverse design, while offering insights into future directions that could further advance this rapidly evolving field.
 
----
+<!-- ---
 
-##### Figure X:  Figure title
+##### Figure X:  Figure title -->
 
-<!-- ![](figurex.png) -->
 
 ---
 
