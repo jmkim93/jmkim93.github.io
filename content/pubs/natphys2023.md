@@ -1,22 +1,19 @@
 ---
-title: "Unidirectional scattering with spatial homogeneity using correlated
-photonic time disorder" 
+title: "Unidirectional scattering with spatial homogeneity using correlated photonic time disorder" 
 date: 2023-02-20
 url: /pubs/natphys2023
-aliases: 
-    - /old_url.html
-# tags: ["keyword 1","keyword 2","keyword 3","keyword 4","keyword 5","keyword 6","keyword 7","keyword 8"]
+tags: ["temporal", "disorder"]
 author: ["Jungmin Kim", "Dayeong Lee", "Sunkyu Yu", "Namkyoo Park"]
 description: "Paper description for search engines (less than 155 characters)" 
-summary: "Nature Physics 19, pages 726-732 (2023)"
+summary: "Nature Physics 19, 726-732 (2023)"
 # cover:
-#     image: "paper_figure.png"
-#     alt: "Figure title (preferably 1280x720 pixels)"
+#     image: "/papers/toc_natphys.jpg"
+#     alt: "fig"
 #     relative: true
 editPost:
     URL: "https://doi.org/10.1038/s41567-023-01962-3"
     Text: "Nature Physics"
-hideSummary: true
+hideSummary: false
 
 ---
 
@@ -25,8 +22,6 @@ hideSummary: true
 ##### Download:
 
 - [Paper](/papers/natphys.pdf)
-<!-- - [Online appendix](appendix.pdf)
-- [Code and data](https://github.com/paper_repo) -->
 
 ---
 
@@ -44,7 +39,7 @@ Recently, there has been increasing interest in the temporal degree of freedom i
 
 ##### Citation
 
-Author 1, Author 2. Year. "Title." *Journal* Volume (Issue): First page–Last page. https://doi.org/paper_doi.
+J. Kim et al., "Unidirectional scattering with spatial homogeneity using correlated photonic time disorder." *Nature Physics* 19: 726-732 (2023). https://doi.org/10.1038/s41567-023-01962-3.
 
 ```BibTeX
 @article{Kim2023,
@@ -67,4 +62,4 @@ Author 1, Author 2. Year. "Title." *Journal* Volume (Issue): First page–Last p
 
 ##### Related material
 
-+ [Presentation slides](presentation.pdf)
+<!-- + [Presentation slides](presentation.pdf) -->
