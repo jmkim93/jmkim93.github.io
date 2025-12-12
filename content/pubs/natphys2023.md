@@ -7,7 +7,7 @@ author: ["Jungmin Kim", "Dayeong Lee", "Sunkyu Yu", "Namkyoo Park"]
 description: "Paper description for search engines (less than 155 characters)" 
 summary: "Nature Physics 19, 726-732 (2023)"
 cover:
-    image: "/papers/toc_natphys.jpg"
+    image: "/papers/toc_natphys.gif"
     alt: "fig"
     relative: true
 editPost:
