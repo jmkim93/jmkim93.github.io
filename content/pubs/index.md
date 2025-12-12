@@ -16,7 +16,6 @@ description: "Jungmin Kim's publication."
 
 
 ---
-[test link](test)
 
 #### Research Articles
 
@@ -79,12 +78,22 @@ Seungkyun Park, Ikbeom Lee, Jungmin Kim, Namkyoo Park & Sunkyu Yu  \
 
 #### Conferences
 
-Incoherent meta-imaging system for noise-robust object recognition, [CLEO-PR 2024](https://opg.optica.org/abstract.cfm?URI=CLEOPR-2024-Mo1A_4).
+Incoherent meta-imaging system for noise-robust object recognition \
+Jungmin Kim, Nanfang Yu & Zongfu Yu \
+[CLEO-PR](https://opg.optica.org/abstract.cfm?URI=CLEOPR-2024-Mo1A_4), Incheon, South Korea (2024).
 
-Design of Correlated Photonic Time Disorder for Unidirectional Scattering, [APC 2023](https://doi.org/10.1364/NOMA.2023.NoTu3C.4).
+Design of Correlated Photonic Time Disorder for Unidirectional Scattering\
+Dayeong Lee, Jungmin Kim, Hyungchul Park, Ikbeom Lee, Sunkyu Yu & Namkyoo Park
+[APC](https://doi.org/10.1364/NOMA.2023.NoTu3C.4), Busan, South Korea (2023).
 
-Data-Driven Engineering of Active Photonic Disorder, [FiO+LS 2022](https://doi.org/10.1364/FIO.2022.JW4A.20).
+Data-Driven Engineering of Active Photonic Disorder\
+Jungmin Kim, Seungkyun Park, Dayeong Lee, Sunkyu Yu & Namkyoo Park\
+[FiO+LS](https://doi.org/10.1364/FIO.2022.JW4A.20), Rochester, NY, USA (2022).
 
-Molecular Dynamics for Microscopic Analysis of Refractive Index in Amorphous Hafnium Oxides, [FiO+LS 2022](https://doi.org/10.1364/FIO.2022.FW7C.5).
+Molecular Dynamics for Microscopic Analysis of Refractive Index in Amorphous Hafnium Oxides\
+Dayeong Lee, Jungmin Kim, Namkyoo Park & Sunkyu Yu\
+[FiO+LS](https://doi.org/10.1364/FIO.2022.FW7C.5), Rochester, NY, USA (2022).
 
-Neural-Network-based Design of Tunable Multilayer Films, [APC 2021](https://doi.org/10.1364/IPRSN.2021.JW4B.3).
+Neural-Network-based Design of Tunable Multilayer Films\
+Jungmin Kim, Sunkyu Yu & Namkyoo Park\
+[APC](https://doi.org/10.1364/IPRSN.2021.JW4B.3), Washington, DC, USA (virtual 2021).
