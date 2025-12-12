@@ -13,7 +13,7 @@ summary: "ACS Photonics 12, 1137-1145 (2025)"
 editPost:
     URL: "https://doi.org/10.1021/acsphotonics.4c02284"
     Text: "ACS Photonics"
-hideSummary: false
+hideSummary: true
 
 ---
 

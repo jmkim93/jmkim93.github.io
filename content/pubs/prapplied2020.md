@@ -13,7 +13,7 @@ summary: "Physical Review Applied 13, 044015 (2020)"
 editPost:
     URL: "https://doi.org/10.1103/PhysRevApplied.13.044015"
     Text: "Physical Review Applied"
-hideSummary: false
+hideSummary: true
 
 ---
 
