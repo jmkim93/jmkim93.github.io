@@ -24,6 +24,7 @@ description: "Jungmin Kim's publication."
 Jungmin Kim, Qingyi Zhou, Zongfu Yu \
 [*Laser & Photonics Reviews*, e01995 (2025)](https://doi.org/10.1002/lpor.202501995).  [[PDF](/papers/lpr.pdf)]
 
+
 **Compute-First Optical Detection for Noise-Resilient Visual Perception** \
 Jungmin Kim, Nanfang Yu & Zongfu Yu \
 [*ACS Photonics* 12, 1137-1145 (2025)](https://doi.org/10.1021/acsphotonics.4c02284). [[PDF](/papers/acsphoton.pdf)]
