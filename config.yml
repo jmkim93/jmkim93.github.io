@@ -51,8 +51,8 @@ params:
           title: Jungmin Kim
           subtitle: Photonics researcher @ UW-Madison
           imageUrl: "picture.jpeg"
-          imageWidth: 160
-          imageHeight: 160
+          imageWidth: 140
+          imageHeight: 140
           buttons:
             - name: Publications
               url: pubs/
