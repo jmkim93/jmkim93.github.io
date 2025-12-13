@@ -5,14 +5,15 @@ url: /pubs/nanoph2022
 tags: ["inverse design"]
 author: ["Junhyeong Kim", "Jae-Yong Kim", "Jungmin Kim", "Yun Hyeong", "Berkay Neseli", "Jong-Bum You", "Joonsup Shim", "Jonghwa Shin", "Hyo-Hoon Park", "Hamza Kurt"]
 # description: "Paper description for search engines (less than 155 characters)" 
-summary: "Nanophotonics 14, 121-151 (2025)"
+journal: "Nanophotonics 14, 121-151 (2025)"
+doi: "https://doi.org/10.1515/nanoph-2024-0536"
 # cover:
 #     image: "/papers/toc_natphys.jpg"
 #     alt: "fig"
 #     relative: true
-editPost:
-    URL: "https://doi.org/10.1515/nanoph-2024-0536"
-    Text: "Nanophotonics"
+# editPost:
+#     URL: "https://doi.org/10.1515/nanoph-2024-0536"
+#     Text: "Nanophotonics"
 hideSummary: true
 
 ---

@@ -5,7 +5,7 @@ theme: PaperMod
 enableInlineShortcodes: true
 enableRobotsTXT: true
 pagination:
-  pagerSize: 20
+  pagerSize: 10
 
 taxonomies:
     tag: tags

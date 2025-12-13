@@ -5,14 +5,15 @@ url: /pubs/natphys2023
 tags: ["time-varying photonics", "scattering", "disordered photonics"]
 author: ["Jungmin Kim", "Dayeong Lee", "Sunkyu Yu", "Namkyoo Park"]
 description: "Paper description for search engines (less than 155 characters)" 
-summary: "Nature Physics 19, 726-732 (2023)"
+journal: "Nature Physics 19, 726-732 (2023)"
+doi: "https://doi.org/10.1038/s41567-023-01962-3"
 cover:
     image: "/papers/toc_natphys.gif"
     alt: "fig"
     relative: true
-editPost:
-    URL: "https://doi.org/10.1038/s41567-023-01962-3"
-    Text: "Nature Physics"
+# editPost:
+#     URL: "https://doi.org/10.1038/s41567-023-01962-3"
+#     Text: "Nature Physics"
 hideSummary: true
 
 ---
