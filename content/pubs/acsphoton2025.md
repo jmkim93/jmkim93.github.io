@@ -2,7 +2,7 @@
 title: "Compute-First Optical Detection for Noise-Resilient Visual Perception" 
 date: 2025-02-05
 url: /pubs/acsphoton2025
-tags: ["imaging", "machine learning", "metasurface", "optical computing"]
+tags: ["deep learning", "metasurface", "optical computing"]
 author: ["Jungmin Kim", "Nanfang Yu", "Zongfu Yu"]
 # description: "Paper description for search engines (less than 155 characters)" 
 summary: "ACS Photonics 12, 1137-1145 (2025)"

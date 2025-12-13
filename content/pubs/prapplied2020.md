@@ -2,7 +2,7 @@
 title: "Universal Design Platform for an Extended Class of Photonic Dirac Cones" 
 date: 2020-04-07
 url: /pubs/prapplied2020
-tags: ["Dirac cone", "band", "spectral engineering"]
+tags: ["Dirac cone", "photonic band", "spectral engineering"]
 author: ["Jungmin Kim", "Sunkyu Yu", "Namkyoo Park"]
 # description: "Paper description for search engines (less than 155 characters)" 
 summary: "Physical Review Applied 13, 044015 (2020)"

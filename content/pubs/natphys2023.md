@@ -2,7 +2,7 @@
 title: "Unidirectional scattering with spatial homogeneity using correlated photonic time disorder" 
 date: 2023-02-20
 url: /pubs/natphys2023
-tags: ["temporal", "disorder"]
+tags: ["time-varying photonics","scattering", "disordered photonics"]
 author: ["Jungmin Kim", "Dayeong Lee", "Sunkyu Yu", "Namkyoo Park"]
 description: "Paper description for search engines (less than 155 characters)" 
 summary: "Nature Physics 19, 726-732 (2023)"

@@ -2,7 +2,7 @@
 title: "Hearing the shape of a drum for light: isospectrality in photonics" 
 date: 2021-12-08
 url: /pubs/nanoph2022
-tags: ["band", "spectral engineering"]
+tags: ["photonic band", "isospectrality"]
 author: ["Seungkyun Park", "Ikbeom Lee", "Jungmin Kim", "Namkyoo Park", "Sunkyu Yu"]
 # description: "Paper description for search engines (less than 155 characters)" 
 summary: "Nanophotonics 11, 2763-2778 (2022)"
