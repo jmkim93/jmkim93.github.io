@@ -8,7 +8,6 @@
 <head>
     {{- partial "head.html" . }}
 </head>
-
 <body class="
 {{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
 {{- print "list" -}}
@@ -17,9 +16,8 @@
 {{- print " dark" }}
 {{- end -}}
 " id="top">
-    {{- if not .IsHome  }}
+    {{- /* was conditioned on not .IsHome; include header everywhere so dark mode works */}}
     {{- partialCached "header.html" . .Page -}}
-    {{- end }}
     <main class="main">
         {{- block "main" . }}{{ end }}
     </main>

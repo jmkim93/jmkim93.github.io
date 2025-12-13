@@ -12,14 +12,14 @@ taxonomies:
 
 menu:
     main:
-        - name: Publications
-          url: pubs/
-          weight: 1
-        - name: CV
-          url: cv.pdf
-          weight: 2
         - name: About
           url: about/
+          weight: 1 
+        - name: Publications
+          url: pubs/
+          weight: 2
+        - name: CV
+          url: cv.pdf
           weight: 3
 
 params:
@@ -29,7 +29,7 @@ params:
     DateFormat: "Jan 02 2006"
     defaultTheme: auto
     hideFooter: false
-    disableThemeToggle: true
+    disableThemeToggle: false
     ShowShareButtons: false
     ShowReadingTime: false
     disableSpecial1stPost: true
@@ -54,12 +54,14 @@ params:
           imageWidth: 140
           imageHeight: 140
           buttons:
+            - name: About
+              url: about/
             - name: Publications
               url: pubs/
             - name: CV
               url: cv.pdf
-            - name: About
-              url: about/
+            # - name: miscellaneous
+            #   url: miscel/ 
             - name: Tags
               url: tags/
             - name: Archive
