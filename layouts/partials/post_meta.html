@@ -1,23 +1,33 @@
-{{- $scratch := newScratch }}
+{{- /* Show: author list, then "[journal](doi)" or "[date]" */}}
+{{- $meta := "" }}
 
-{{- if not .Date.IsZero -}}
-{{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default "January 2, 2006" site.Params.DateFormat)))) }}
+{{- if not (.Param "hideAuthor") }}
+    {{- with (partial "author.html" .) }}
+        {{- $meta = . }}
+    {{- end }}
 {{- end }}
 
-{{- if (.Param "ShowReadingTime") -}}
-{{- $scratch.Add "meta" (slice (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime))) }}
+{{- $suffix := "" }}
+{{- $journal := .Param "journal" }}
+{{- $doi := .Param "doi" }}
+
+{{- if $journal }}
+    {{- if $doi }}
+        {{- $doiURL := cond (or (hasPrefix $doi "http://") (hasPrefix $doi "https://")) $doi (printf "https://doi.org/%s" $doi) -}}
+        {{- $suffix = printf "<a class='post-meta-doi' href='%s' target='_blank' rel='noreferrer noopener'>%s</a>" $doiURL $journal }}
+    {{- else }}
+        {{- $suffix = printf "%s" $journal }}
+    {{- end }}
+{{- else if not .Date.IsZero }}
+    {{- $suffix = printf "%s" (.Date | time.Format (default "January 2, 2006" site.Params.DateFormat)) }}
 {{- end }}
 
-{{- if (.Param "ShowWordCount") -}}
-{{- $scratch.Add "meta" (slice (i18n "words" .WordCount | default (printf "%d words" .WordCount))) }}
+{{- if $suffix }}
+    {{- if $meta }}
+        {{- $meta = printf "%s, %s" $meta $suffix }}
+    {{- else }}
+        {{- $meta = $suffix }}
+    {{- end }}
 {{- end }}
 
-{{- if not (.Param "hideAuthor") -}}
-{{- with (partial "author.html" .) }}
-{{- $scratch.Add "meta" (slice .) }}
-{{- end }}
-{{- end }}
-
-{{- with ($scratch.Get "meta") }}
-{{- delimit . "&nbsp;&middot;&nbsp;" | safeHTML -}}
-{{- end -}}
+{{- if $meta }}{{ $meta | safeHTML }}{{- end }}

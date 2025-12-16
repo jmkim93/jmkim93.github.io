@@ -5,7 +5,8 @@ url: /pubs/acsphoton2025
 tags: ["deep learning", "metasurface", "optical computing"]
 author: ["Jungmin Kim", "Nanfang Yu", "Zongfu Yu"]
 # description: "Paper description for search engines (less than 155 characters)" 
-summary: "ACS Photonics 12, 1137-1145 (2025)"
+journal: "ACS Photonics 12, 1137-1145 (2025)"
+doi: "https://doi.org/10.1021/acsphotonics.4c02284"
 cover:
     image: "/papers/toc_acsphoton.png"
     alt: "fig"
