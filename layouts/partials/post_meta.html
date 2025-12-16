@@ -18,6 +18,19 @@
 {{- end }}
 {{- end }}
 
+<<<<<<< HEAD
+=======
+{{- with .Params.journal -}}
+  {{- $link := (or $.Params.doi (and $.Params.editPost $.Params.editPost.URL) $.Params.url) -}}
+  {{- if $link }}
+    {{- $scratch.Add "meta" (slice (printf "<a href=\"%s\">%s</a>" $link .)) }}
+  {{- else }}
+    {{- $scratch.Add "meta" (slice .) }}
+  {{- end }}
+{{- end }}
+
+
+>>>>>>> parent of 4dc41dc (Update post_meta.html)
 {{- with ($scratch.Get "meta") }}
 {{- delimit . "&nbsp;&middot;&nbsp;" | safeHTML -}}
 {{- end -}}
