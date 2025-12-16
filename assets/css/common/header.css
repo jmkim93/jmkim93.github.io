@@ -91,16 +91,3 @@ body:not(.dark) #sun {
 .logo-switches {
     flex-wrap: inherit;
 }
-
-.header--home .nav {
-    justify-content: flex-start;
-}
-
-.header--home .logo {
-    width: auto;
-    justify-content: flex-start;
-}
-
-.header--home .logo-switches {
-    margin-inline: var(--gap) 0;
-}
