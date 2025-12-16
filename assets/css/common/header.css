@@ -2,10 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: calc(var(--nav-width) + var(--gap) * 2);
     margin-inline-start: auto;
     margin-inline-end: auto;
     line-height: var(--header-height);
+    background: var(--code-bg);
 }
 
 .nav a {
@@ -23,8 +23,8 @@
 }
 
 .logo a {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: var(--headersize);
+    font-weight: var(--semibold);
 }
 
 .logo a img, .logo a svg {
@@ -37,15 +37,16 @@
 }
 
 button#theme-toggle {
-    font-size: 26px;
+    font-size: 20px;
     margin: auto 4px;
 }
 
-[data-theme="dark"] #moon {
+body.dark #moon {
+    vertical-align: middle;
     display: none;
 }
 
-[data-theme="light"] #sun {
+body:not(.dark) #sun {
     display: none;
 }
 
@@ -61,12 +62,12 @@ button#theme-toggle {
 }
 
 #menu a {
-    font-size: 16px;
+    font-size: var(--headersize);
+    font-weight: 400;
 }
 
 #menu .active {
-    font-weight: 500;
-    border-bottom: 2px solid currentColor;
+    border-bottom: 2px solid var(--darkcolor);
 }
 
 .lang-switch li,

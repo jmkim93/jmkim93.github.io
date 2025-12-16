@@ -27,7 +27,7 @@ params:
     author: "Jungmin Kim"
     # googleAnalyticsID: "G-XXXXX"
     DateFormat: "Jan 02 2006"
-    defaultTheme: light
+    defaultTheme: auto
     hideFooter: true
     disableThemeToggle: false
     ShowShareButtons: false
