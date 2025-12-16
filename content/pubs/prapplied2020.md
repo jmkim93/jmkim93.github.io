@@ -5,15 +5,14 @@ url: /pubs/prapplied2020
 tags: ["Dirac cone", "photonic band", "spectral engineering"]
 author: ["Jungmin Kim", "Sunkyu Yu", "Namkyoo Park"]
 # description: "Paper description for search engines (less than 155 characters)" 
-journal: "Physical Review Applied 13, 044015 (2020)"
-doi: "https://doi.org/10.1103/PhysRevApplied.13.044015"
-# cover:
-#     image: "/papers/toc_prapplied.png"
-#     alt: "fig"
-#     relative: true
-# editPost:
-#     URL: "https://doi.org/10.1103/PhysRevApplied.13.044015"
-#     Text: "Physical Review Applied"
+summary: "Physical Review Applied 13, 044015 (2020)"
+cover:
+    image: "/papers/toc_prapplied.png"
+    alt: "fig"
+    relative: true
+editPost:
+    URL: "https://doi.org/10.1103/PhysRevApplied.13.044015"
+    Text: "Physical Review Applied"
 hideSummary: true
 
 ---

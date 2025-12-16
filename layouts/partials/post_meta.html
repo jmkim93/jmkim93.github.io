@@ -1,6 +1,8 @@
 {{- $scratch := newScratch }}
 
-
+{{- if not .Date.IsZero -}}
+{{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default "January 2, 2006" site.Params.DateFormat)))) }}
+{{- end }}
 
 {{- if (.Param "ShowReadingTime") -}}
 {{- $scratch.Add "meta" (slice (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime))) }}
@@ -16,15 +18,19 @@
 {{- end }}
 {{- end }}
 
-{{- $journal := .Params.journal -}}
-{{- $link := (or $.Params.doi (and $.Params.editPost $.Params.editPost.URL) $.Params.url) -}}
-{{- if and $journal $link -}}
-  {{- $scratch.Add "meta" (slice (printf "<a href=\"%s\">%s</a>" $link $journal)) }}
-{{- else if not .Date.IsZero -}}
-  {{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default "January 2, 2006" site.Params.DateFormat)))) }}
+<<<<<<< HEAD
+=======
+{{- with .Params.journal -}}
+  {{- $link := (or $.Params.doi (and $.Params.editPost $.Params.editPost.URL) $.Params.url) -}}
+  {{- if $link }}
+    {{- $scratch.Add "meta" (slice (printf "<a href=\"%s\">%s</a>" $link .)) }}
+  {{- else }}
+    {{- $scratch.Add "meta" (slice .) }}
+  {{- end }}
 {{- end }}
 
 
+>>>>>>> parent of 4dc41dc (Update post_meta.html)
 {{- with ($scratch.Get "meta") }}
 {{- delimit . "&nbsp;&middot;&nbsp;" | safeHTML -}}
 {{- end -}}

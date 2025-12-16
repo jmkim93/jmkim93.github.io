@@ -5,7 +5,7 @@ theme: PaperMod
 enableInlineShortcodes: true
 enableRobotsTXT: true
 pagination:
-  pagerSize: 10
+  pagerSize: 20
 
 taxonomies:
     tag: tags
@@ -27,8 +27,8 @@ params:
     author: "Jungmin Kim"
     # googleAnalyticsID: "G-XXXXX"
     DateFormat: "Jan 02 2006"
-    defaultTheme: dark
-    hideFooter: false
+    defaultTheme: light
+    hideFooter: true
     disableThemeToggle: false
     ShowShareButtons: false
     ShowReadingTime: false

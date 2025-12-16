@@ -5,15 +5,14 @@ url: /pubs/nanoph2022
 tags: ["photonic band", "isospectrality"]
 author: ["Seungkyun Park", "Ikbeom Lee", "Jungmin Kim", "Namkyoo Park", "Sunkyu Yu"]
 # description: "Paper description for search engines (less than 155 characters)" 
-journal: "Nanophotonics 11, 2763-2778 (2022)"
-doi: "https://doi.org/10.1515/nanoph-2021-0614"
+summary: "Nanophotonics 11, 2763-2778 (2022)"
 # cover:
 #     image: "/papers/toc_natphys.jpg"
 #     alt: "fig"
 #     relative: true
-# editPost:
-#     URL: "https://doi.org/10.1515/nanoph-2021-0614"
-#     Text: "Nanophotonics"
+editPost:
+    URL: "https://doi.org/10.1515/nanoph-2021-0614"
+    Text: "Nanophotonics"
 hideSummary: true
 
 ---
