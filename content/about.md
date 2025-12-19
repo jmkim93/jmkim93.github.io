@@ -14,11 +14,17 @@ Scientist I\
 Department of Electrical and Computer Engineering\
 University of Wisconsin-Madison
 
+
 ---
+#### Education
 
-#### Email
+Ph.D. in Electrical and Computer Engineering (2023) \
+Seoul National University \
+Advisors: Prof. [Namkyoo Park](https://stargate.snu.ac.kr) and Prof. [Sunkyu Yu](https://waves.snu.ac.kr).
 
-jkim2325@wisc.edu
+B.S. in Electrical and Computer Engineering (20) \
+Seoul National University
+
 
 ---
 
