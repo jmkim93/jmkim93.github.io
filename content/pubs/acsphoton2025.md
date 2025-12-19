@@ -11,9 +11,9 @@ cover:
     image: "/papers/toc_acsphoton.png"
     alt: "fig"
     relative: true
-editPost:
-    URL: "https://doi.org/10.1021/acsphotonics.4c02284"
-    Text: "ACS Photonics"
+# editPost:
+#     URL: "https://doi.org/10.1021/acsphotonics.4c02284"
+#     Text: "ACS Photonics"
 hideSummary: true
 
 ---
