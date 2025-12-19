@@ -5,6 +5,12 @@ url: /about/
 hidemeta: true
 
 ---
+I’m a postdoctoral researcher at the University of Wisconsin-Madison, working with Prof. [Zongfu Yu](https://photonics.engr.wisc.edu). My research focuses on the simulation and inverse design of photonic systems for optical computing applications, including neuromorphic metasurfaces and photonic integrated circuits.
+
+Before coming to the United States, I earned my Ph.D. from Seoul National University, South Korea, under the supervision of Prof. [Namkyoo Park](https://stargate.snu.ac.kr) and Prof. [Sunkyu Yu](https://waves.snu.ac.kr). During my doctoral work, I built a broad foundation in photonic systems, with particular experience in deep learning, disordered and time-varying photonics.
+
+In my free time, I enjoy outdoor activities such as running along the shoreline of Lake Mendota in Madison, as well as paddleboarding, camping, and hiking in nearby areas. I also enjoy road trips to explore nature and the wilderness, especially visits to national parks. [[Miscellaneous]](/miscel/)
+
 
 ---
 #### Affiliation
@@ -13,17 +19,6 @@ Jungmin Kim, Ph.D.\
 Scientist I\
 Department of Electrical and Computer Engineering\
 University of Wisconsin-Madison
-
-
----
-#### Education
-
-Ph.D. in Electrical and Computer Engineering (2023) \
-Seoul National University \
-Advisors: Prof. [Namkyoo Park](https://stargate.snu.ac.kr) and Prof. [Sunkyu Yu](https://waves.snu.ac.kr).
-
-B.S. in Electrical and Computer Engineering (20) \
-Seoul National University
 
 
 ---
