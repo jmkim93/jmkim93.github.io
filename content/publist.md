@@ -87,7 +87,7 @@ Jungmin Kim, Nanfang Yu & Zongfu Yu \
 [CLEO-PR](https://opg.optica.org/abstract.cfm?URI=CLEOPR-2024-Mo1A_4), Incheon, South Korea (2024).
 
 Design of Correlated Photonic Time Disorder for Unidirectional Scattering\
-Dayeong Lee, Jungmin Kim, Hyungchul Park, Ikbeom Lee, Sunkyu Yu & Namkyoo Park
+Dayeong Lee, Jungmin Kim, Hyungchul Park, Ikbeom Lee, Sunkyu Yu & Namkyoo Park \
 [APC](https://doi.org/10.1364/NOMA.2023.NoTu3C.4), Busan, South Korea (2023).
 
 Data-Driven Engineering of Active Photonic Disorder\
