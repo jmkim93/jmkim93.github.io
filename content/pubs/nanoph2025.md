@@ -1,7 +1,7 @@
 ---
 title: "Inverse design of nanophotonic devices enabled by optimization algorithms and deep learning: recent achievements and future prospects" 
 date: 2025-01-27
-url: /pubs/nanoph2022
+url: /pubs/nanoph2025
 tags: ["inverse design"]
 author: ["Junhyeong Kim", "Jae-Yong Kim", "Jungmin Kim", "Yun Hyeong", "Berkay Neseli", "Jong-Bum You", "Joonsup Shim", "Jonghwa Shin", "Hyo-Hoon Park", "Hamza Kurt"]
 # description: "Paper description for search engines (less than 155 characters)" 
