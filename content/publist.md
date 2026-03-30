@@ -16,6 +16,10 @@ description: "Jungmin Kim's publication."
 [Ph.D. Dissertation, Seoul National University (2023)](https://www.riss.kr/link?id=T16750284). [[PDF](/papers/Dissertation.pdf)]
 
 
+**All-Optical Deep Learning with Quantum Nonlinearity** \
+Qingyi Zhou, Jungmin Kim, Yutian Tao, Guoming Huang, Ming Zhou, Zewei Shao, Zongfu Yu \
+[arXiv preprint arXiv:2601.01690 (2026)](https://arxiv.org/abs/2601.01690). 
+
 ---
 
 #### Research Articles
