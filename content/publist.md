@@ -26,7 +26,7 @@ Qingyi Zhou, Jungmin Kim, Yutian Tao, Guoming Huang, Ming Zhou, Zewei Shao, Zong
 
 **Photonic Systolic Array for All-Optical Matrix–Matrix Multiplication** \
 Jungmin Kim, Qingyi Zhou, Zongfu Yu \
-[*Laser & Photonics Reviews*, e01995 (2025)](https://doi.org/10.1002/lpor.202501995).  [[PDF](/papers/lpr.pdf)]
+[*Laser & Photonics Reviews* 20, e01995 (2026)](https://doi.org/10.1002/lpor.202501995).  [[PDF](/papers/lpr.pdf)]
 
 
 **Compute-First Optical Detection for Noise-Resilient Visual Perception** \
