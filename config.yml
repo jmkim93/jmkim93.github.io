@@ -49,8 +49,8 @@ params:
     profileMode:
           enabled: true
           title: Jungmin Kim
-          subtitle: Photonics researcher @ UW-Madison
-          imageUrl: "picture.jpeg"
+          subtitle: Photonics engineer @ Flexcompute
+          imageUrl: "picture.jpg"
           imageWidth: 140
           imageHeight: 140
           buttons:
