@@ -1,0 +1,363 @@
+:root {
+    --header-height: 44px;
+    --footer-height: 70px;
+    --content: rgb(30, 30, 30);
+    --gray: rgb(165, 165, 165);
+    --darkcolor: #167be6d1;
+    --lightcolor: #167be694;
+    --semibold: 500;
+    --homesize: 16px;
+    --textsize: 17px;
+    --h1size: 24px;
+    --entrysize: 15px;
+    --headersize: 16px;
+    --footersize: 12px;
+    --lineheight: 1.45;
+    --lineclamp: 8;
+    --marginleft: 26px;
+}
+
+.not-found {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--secondary);
+}
+
+.archive-year {
+    margin-top: 20px;
+}
+
+.archive-year-header {
+    font-size: 1.4rem;
+    font-weight: var(--semibold);
+}
+
+.archive-year:not(:last-of-type) {
+    border-bottom: 2px solid var(--tertiary);
+}
+
+.archive-month-header {
+    margin: var(--homesize) 0;
+    width: 150px;
+    font-size: var(--homesize);
+    font-weight: var(--semibold);
+}
+
+.archive-entry {
+    padding: 5px 0;
+}
+
+.archive-entry-title {
+    font-size: var(--homesize);
+    font-weight: normal;
+}
+
+.footer,
+.top-link {
+    font-size: var(--footersize);
+}
+
+.footer {
+    background: var(--code-bg);
+    line-height: 20px;
+}
+
+.footer a {
+    color: var(--secondary);
+}
+
+.footer a:hover {
+    border-bottom: 2px solid var(--darkcolor);
+}
+
+.footer a:hover,
+.top-link:hover {
+    color: var(--secondary);
+}
+
+.nav {
+    background: var(--code-bg);
+}
+
+.logo a {
+    font-size: var(--headersize);
+    font-weight: var(--semibold);
+}
+
+button#theme-toggle {
+    font-size: 20px;
+}
+
+#menu a {
+    font-size: var(--headersize);
+    font-weight: 400;
+}
+
+#menu .active {
+    border-bottom: 2px solid var(--darkcolor);
+}
+
+.page-header h1 {
+    font-size: var(--h1size);
+}
+
+.social-icons a {
+    padding: 10px 14px 10px 0;
+}
+
+.social-icons a svg {
+    height: 30px;
+    width: 30px;
+}
+
+.social-icons a:hover {
+    color: var(--darkcolor);
+}
+
+code {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+.first-entry,
+.post-entry {
+    min-height: 200px;
+}
+
+.first-entry .entry-content,
+.entry-content {
+    -webkit-line-clamp: var(--lineclamp);
+}
+
+.post-entry {
+    border: 2px solid var(--border);
+}
+
+.post-entry:hover {
+    border: 2px solid var(--darkcolor);
+}
+
+.entry-header h2 {
+    font-size: 20px;
+    line-height: var(--lineheight);
+}
+
+.entry-content {
+    margin: 20px 10px;
+    font-size: var(--entrysize);
+    line-height: var(--lineheight);
+}
+
+.entry-footer,
+.entry-cover {
+    font-size: var(--entrysize);
+}
+
+.entry-footer {
+    color: var(--content);
+}
+
+.buttons,
+.main .profile {
+    display: flex;
+    justify-content: left;
+}
+
+.main .profile {
+    align-items: center;
+    min-height: calc(100vh - var(--footer-height) - (var(--gap) * 2));
+    padding: var(--gap);
+    font-size: var(--homesize);
+    line-height: var(--lineheight);
+}
+
+.profile .profile_inner {
+    align-items: flex-start;
+}
+
+.profile .profile_inner h1 {
+    font-size: 2.5rem;
+}
+
+.profile img {
+    border: 1px solid var(--tertiary);
+}
+
+.buttons {
+    max-width: none;
+}
+
+.button {
+    margin: 6px 12px 6px 0;
+    padding: 10px;
+}
+
+.button:hover,
+.terms-tags a:hover,
+.post-tags a:hover,
+.paginav a:hover {
+    background: var(--lightcolor);
+}
+
+.post-title {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.post-meta,
+.breadcrumbs {
+    font-size: 15px;
+}
+
+.post-content {
+    font-size: var(--textsize);
+    line-height: var(--lineheight);
+}
+
+.post-content h2 {
+    font-size: 24px;
+}
+
+.post-content h3 {
+    font-size: 19px;
+}
+
+.post-content h4,
+.post-content h5,
+.post-content table th,
+.toc .details {
+    font-weight: var(--semibold);
+    text-transform: uppercase;
+}
+
+.post-content h4,
+.post-content h5,
+.post-content table th {
+    color: var(--gray);
+}
+
+.post-content h4 {
+    font-size: 15px;
+}
+
+.post-content h5 {
+    font-size: 14px;
+}
+
+.post-content h6 {
+    font-size: var(--footersize);
+    color: var(--secondary);
+}
+
+.post-content a,
+.post-meta a,
+.toc a:hover,
+a[href^="#fn:"]:hover,
+a[href^="#fnref:"]:hover {
+    color: var(--darkcolor);
+}
+
+a[href^="#fn:"],
+a[href^="#fnref:"] {
+    box-shadow: none;
+}
+
+.post-content ol,
+.post-content ul {
+    margin-left: var(--marginleft);
+}
+
+.post-content li::marker,
+.toc li::marker {
+    color: var(--tertiary);
+}
+
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
+    line-height: var(--lineheight);
+}
+
+.post-content table th {
+    font-size: 14px;
+    border-bottom: 2px solid var(--tertiary);
+}
+
+.post-content code {
+    line-height: var(--lineheight);
+}
+
+.post-content pre code {
+    color: var(--secondary);
+}
+
+.post-content blockquote {
+    padding: 0 20px;
+    color: var(--secondary);
+    border-inline-start: 6px solid var(--tertiary);
+}
+
+.toc {
+    margin: 0 2px 20px;
+}
+
+.toc .details {
+    font-size: 15px;
+}
+
+.toc .inner {
+    font-size: 16px;
+}
+
+.post-footer {
+    margin-top: 60px;
+}
+
+.paginav {
+    border: 0;
+    line-height: var(--lineheight);
+    font-size: var(--footersize);
+}
+
+.paginav a {
+    padding-inline-start: 15px;
+    padding-inline-end: 15px;
+    color: var(--secondary);
+}
+
+.post-tags a {
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 32px;
+}
+
+#searchbox input {
+    background: var(--entry);
+    border: 1px solid var(--border);
+}
+
+#searchResults li {
+    font-weight: 400;
+}
+
+#searchResults .focus {
+    border: 1px solid var(--darkcolor);
+}
+
+.terms-tags li {
+    font-weight: 400;
+}
+
+.terms-tags a {
+    font-size: var(--homesize);
+}
