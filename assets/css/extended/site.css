@@ -85,10 +85,6 @@
     color: var(--secondary);
 }
 
-.nav {
-    background: var(--code-bg);
-}
-
 .logo a {
     font-size: var(--headersize);
     font-weight: var(--semibold);
@@ -129,11 +125,6 @@ code {
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-}
-
-.first-entry,
-.post-entry {
-    min-height: 200px;
 }
 
 .first-entry .entry-content,
