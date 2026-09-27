@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jungmin Kim, Senior Photonics Engineer at Flexcompute. Research in optical computing, inverse design, and disordered photonics.">
+  <meta name="theme-color" content="#506b85">
+  <title>Jungmin Kim | Photonics Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23506b85'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia' font-size='23' fill='white'%3Ej%3C/text%3E%3C/svg%3E">
+  <script>
+    (() => {
+      let saved;
+      try { saved = localStorage.getItem('jm-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
+        ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    /* Edit these colors to make the page your own. No external files required. */
+    :root { --paper:#f6f8fa; --ink:#293440; --muted:#626f7d; --accent:#506b85; --line:#d9e1e8; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:2rem; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:1.65; }
+    a { color:inherit; text-underline-offset:5px; }
+    a:hover { color:var(--accent); }
+    a:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:6px; }
+    .skip { position:absolute; left:1rem; top:-6rem; padding:.6rem 1rem; background:white; z-index:5; }
+    .skip:focus { top:1rem; }
+    .wrap { width:min(1120px,calc(100% - 96px)); margin:auto; }
+    header { display:flex; justify-content:space-between; gap:2rem; align-items:center; padding:30px 0; border-bottom:1px solid var(--line); }
+    .wordmark { font-family:Georgia,serif; font-size:1.5rem; font-weight:bold; text-decoration:none; }
+    nav { display:flex; flex-wrap:wrap; gap:28px; font-size:.9rem; }
+    nav a { text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    .hero { padding:72px 0 64px; }
+    .eyebrow { margin:0 0 26px; font-size:.8rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+    h1 { font-size:clamp(3rem,7.5vw,6.25rem); line-height:1.12; font-weight:500; letter-spacing:-.04em; margin:0 0 30px; }
+    h1 span { font-family:Georgia,'Times New Roman',serif; font-style:normal; color:var(--accent); letter-spacing:-.035em; }
+    .hero-bottom { display:flex; align-items:end; justify-content:space-between; gap:3rem; }
+    .intro { max-width:550px; font-size:clamp(1.15rem,2.5vw,1.5rem); line-height:1.5; margin:0; color:var(--muted); }
+    .text-link { flex-shrink:0; font-size:.95rem; }
+    section { padding:46px 0 60px; border-top:1px solid var(--line); }
+    .section-grid { display:grid; grid-template-columns:1fr 2fr; gap:48px; }
+    .label { margin:0; font-size:.9rem; font-weight:normal; }
+    .label small { margin-right:16px; font-size:.8rem; color:var(--muted); }
+    .about-text { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.5rem,3vw,2rem); line-height:1.45; margin:0 0 24px; letter-spacing:-.02em; }
+    .support { color:var(--muted); margin:0; max-width:580px; }
+    .publication { padding:25px 0; border-bottom:1px solid var(--line); }
+    .publication:first-child { padding-top:0; }
+    .pub-meta { font-size:.8rem; color:var(--accent); margin:0 0 10px; }
+    .publication h3 { font-size:1.3rem; line-height:1.4; font-weight:500; margin:0 0 10px; }
+    .publication h3 a { text-decoration:none; }
+    .publication h3 a:hover { text-decoration:underline; }
+    .authors { margin:0; color:var(--muted); font-size:.9rem; }
+    .contact { background:var(--accent); color:white; padding:54px; margin-bottom:42px; border:0; }
+    .contact .eyebrow { color:#e6eef5; margin-bottom:18px; }
+    .contact h2 { font-family:Georgia,'Times New Roman',serif; font-weight:normal; font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.1; letter-spacing:-.04em; margin:0 0 30px; }
+    .contact a { font-size:clamp(1rem,2.5vw,1.4rem); overflow-wrap:anywhere; }
+    .contact a:hover { color:white; text-decoration-thickness:3px; }
+    .contact a:focus-visible { outline-color:white; }
+    footer { display:flex; justify-content:space-between; gap:1rem; padding:0 0 30px; color:var(--muted); font-size:.8rem; }
+    @media(max-width:700px) {
+      .wrap { width:calc(100% - 40px); }
+      header { padding:22px 0; gap:16px; align-items:start; flex-direction:column; }
+      nav { gap:15px; padding-top:6px; }
+      .hero { padding:52px 0 46px; }
+      .hero-bottom { align-items:start; flex-direction:column; gap:26px; }
+      .section-grid { grid-template-columns:1fr; gap:30px; }
+      section { padding:32px 0 42px; }
+      .contact { padding:32px 24px; margin-bottom:28px; }
+      footer { flex-wrap:wrap; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  
+    :root { color-scheme:light; --contact-bg:#506b85; }
+    :root[data-theme="dark"] {
+      color-scheme:dark;
+      --paper:#1b222a; --ink:#e8eef4; --muted:#aebdcb;
+      --accent:#9bb8d2; --line:#374451; --contact-bg:#33485b;
+    }
+    .skip { background:var(--paper); }
+    .contact { background:var(--contact-bg); }
+    header nav { align-items:center; }
+    .theme-toggle {
+      font:inherit; font-size:.875rem; line-height:1.3; color:var(--ink);
+      background:transparent; border:1px solid var(--line); border-radius:6px;
+      min-height:44px; padding:8px 12px; cursor:pointer;
+    }
+    .theme-toggle:hover { color:var(--accent); border-color:var(--accent); }
+    .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+  
+    .theme-toggle {
+      width:36px; height:36px; min-height:36px; padding:8px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border:0; border-radius:50%; flex-shrink:0;
+    }
+    .theme-toggle[hidden] { display:none; }
+    .theme-toggle:hover { background:var(--line); }
+    .theme-toggle svg { flex-shrink:0; }
+    .theme-sun { display:none; }
+    :root[data-theme="dark"] .theme-moon { display:none; }
+    :root[data-theme="dark"] .theme-sun { display:block; }
+    footer { flex-wrap:wrap; align-items:center; }
+    .profile-links { gap:12px 22px; font-size:.875rem; }
+    @media(pointer:coarse) { .theme-toggle { width:44px; height:44px; } }
+    @media(max-width:700px) { .profile-links { flex-basis:100%; order:-1; padding:0 0 8px; } }
+  
+    .contact .profile-links { margin-top:28px; padding:0; gap:16px 26px; }
+    .contact .profile-links a { font-size:.95rem; color:#e6eef5; }
+    .contact .profile-links a:hover { color:white; text-decoration:underline; }
+  
+    .hero { display:grid; grid-template-columns:minmax(0,1fr) 157.5px; align-items:center; gap:56px; }
+    .profile-photo { position:relative; width:157.5px; aspect-ratio:1; border-radius:50%; overflow:hidden; margin:0; border:1px solid var(--line); }
+    .profile-photo img { position:absolute; width:145%; height:145%; max-width:none; left:50%; top:50%; transform:translate(-50%,-59%); object-fit:cover; }
+    .hero .hero-bottom { align-items:start; flex-direction:column; gap:20px; }
+    @media(max-width:760px) { .hero { grid-template-columns:minmax(0,1fr) 112.5px; gap:28px; } .profile-photo { width:112.5px; } }
+    @media(max-width:540px) { .hero { display:flex; flex-direction:column-reverse; align-items:start; gap:28px; } .profile-photo { width:99px; } }
+  </style>
+</head>
+<!-- Sources: https://jmkim93.github.io/about/ , https://jmkim93.github.io/pubs/ , https://jmkim93.github.io/cv.pdf -->
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header>
+      <a class="wordmark" href="#top">Jungmin Kim</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="publications.html">Publications</a>
+        <a href="cv.pdf">CV</a>
+        <a href="#contact">Contact</a>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
+          <svg class="theme-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13a8.5 8.5 0 0 1-9.5-9.5A8.5 8.5 0 1 0 20.5 13Z"/></svg>
+          <svg class="theme-sun" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button></nav>
+    </header>
+    <main id="main">
+      <div class="hero">
+        <div class="hero-copy">
+        <p class="eyebrow">Photonics engineer at Flexcompute</p>
+        <h1>Jungmin <span>Kim</span></h1>
+        <div class="hero-bottom">
+          <p class="intro">I work on the simulation and inverse design of photonic systems for optical computing.</p>
+        </div>
+        </div>
+        <figure class="profile-photo"><img src="assets/headshot.jpg" alt="Jungmin Kim" width="2559" height="2559" fetchpriority="high"></figure>
+      </div>
+      <section id="about" class="section-grid" aria-labelledby="about-title">
+        <h2 class="label" id="about-title"><small>01</small> About me</h2>
+        <div>
+          <p class="about-text">I’m a Senior Photonics Engineer at Flexcompute, based in Madison, Wisconsin.</p>
+          <p class="support">Previously, I worked with Prof. Zongfu Yu at the University of Wisconsin–Madison from 2023 to April 2026, studying neuromorphic metasurfaces and photonic integrated circuits.<br><br>I earned my Ph.D. in Electrical and Computer Engineering at Seoul National University in 2023, advised by Prof. Namkyoo Park and Prof. Sunkyu Yu. My doctoral research explored deep learning and disordered, time-varying photonics.<br><br>Outside work, I enjoy running along Lake Mendota, paddleboarding, and visiting national parks.</p>
+        </div>
+      </section>
+      <section id="work" class="section-grid" aria-labelledby="work-title">
+        <h2 class="label" id="work-title"><small>02</small> Selected publications</h2>
+        <div>
+          <article class="publication">
+            <p class="pub-meta">2026 / Nature Communications</p>
+            <h3><a href="https://doi.org/10.1038/s41467-026-77202-y">Quantum nonlinearity for optical neural computing</a></h3>
+            <p class="authors">Qingyi Zhou, Jungmin Kim, Yutian Tao, Guoming Huang, Ming Zhou, Zewei Shao, Zongfu Yu</p>
+          </article>
+          <article class="publication">
+            <p class="pub-meta">2026 / Laser &amp; Photonics Reviews</p>
+            <h3><a href="https://doi.org/10.1002/lpor.202501995">Photonic Systolic Array for All-Optical Matrix–Matrix Multiplication</a></h3>
+            <p class="authors">Jungmin Kim, Qingyi Zhou, Zongfu Yu</p>
+          </article>
+          <article class="publication">
+            <p class="pub-meta">2023 / Nature Physics</p>
+            <h3><a href="https://doi.org/10.1038/s41567-023-01962-3">Unidirectional scattering with spatial homogeneity using correlated photonic time disorder</a></h3>
+            <p class="authors">Jungmin Kim, Dayeong Lee, Sunkyu Yu, Namkyoo Park</p>
+          </article>
+          <p><a href="publications.html">All publications</a></p>
+        </div>
+      </section>
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <p class="eyebrow">Get in touch</p>
+        <h2 id="contact-title">Contact</h2>
+        <a href="mailto:jmkim93@gmail.com">jmkim93@gmail.com</a>
+        <nav class="profile-links" aria-label="Professional profiles"><a href="https://scholar.google.com/citations?user=AGjDgr0AAAAJ">Google Scholar</a><a href="https://www.linkedin.com/in/jmkim93">LinkedIn</a><a href="https://orcid.org/0000-0001-8567-5338">ORCID</a></nav>
+      </section>
+    </main>
+    <footer><span>© Jungmin Kim</span><a href="#top">Back to top</a></footer>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const button = document.querySelector('.theme-toggle');
+      const system = matchMedia('(prefers-color-scheme: dark)');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      function savedTheme() {
+        try { return localStorage.getItem('jm-theme'); } catch (_) { return null; }
+      }
+      function apply(theme) {
+        root.dataset.theme = theme;
+        const dark = theme === 'dark';
+        button.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+        button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        meta.content = dark ? '#1b222a' : '#506b85';
+      }
+      function sync() {
+        const saved = savedTheme();
+        apply(saved === 'light' || saved === 'dark' ? saved : (system.matches ? 'dark' : 'light'));
+      }
+      apply(root.dataset.theme);
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try { localStorage.setItem('jm-theme', next); } catch (_) {}
+      });
+      system.addEventListener('change', () => {
+        if (!['light', 'dark'].includes(savedTheme())) sync();
+      });
+      window.addEventListener('storage', event => {
+        if (event.key === 'jm-theme' || event.key === null) sync();
+      });
+      window.addEventListener('pageshow', sync);
+    })();
+  </script>
+</body>
+</html>

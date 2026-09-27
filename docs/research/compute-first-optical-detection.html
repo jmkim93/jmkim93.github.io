@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A camera normally detects an image before software extracts useful features. This paper asks whether some of that processing should happen in light, before detector noise is added.">
+  <meta name="theme-color" content="#506b85">
+  <title>Compute-First Optical Detection for Noise-Resilient Visual Perception | Jungmin Kim</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23506b85'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia' font-size='23' fill='white'%3Ej%3C/text%3E%3C/svg%3E">
+  <script>
+    (() => {
+      let saved;
+      try { saved = localStorage.getItem('jm-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
+        ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    /* Edit these colors to make the page your own. No external files required. */
+    :root { --paper:#f6f8fa; --ink:#293440; --muted:#626f7d; --accent:#506b85; --line:#d9e1e8; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:2rem; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:1.65; }
+    a { color:inherit; text-underline-offset:5px; }
+    a:hover { color:var(--accent); }
+    a:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:6px; }
+    .skip { position:absolute; left:1rem; top:-6rem; padding:.6rem 1rem; background:white; z-index:5; }
+    .skip:focus { top:1rem; }
+    .wrap { width:min(1120px,calc(100% - 96px)); margin:auto; }
+    header { display:flex; justify-content:space-between; gap:2rem; align-items:center; padding:30px 0; border-bottom:1px solid var(--line); }
+    .wordmark { font-family:Georgia,serif; font-size:1.5rem; font-weight:bold; text-decoration:none; }
+    nav { display:flex; flex-wrap:wrap; gap:28px; font-size:.9rem; }
+    nav a { text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    .hero { padding:72px 0 64px; }
+    .eyebrow { margin:0 0 26px; font-size:.8rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+    h1 { font-size:clamp(3rem,7.5vw,6.25rem); line-height:1.12; font-weight:500; letter-spacing:-.04em; margin:0 0 30px; }
+    h1 span { font-family:Georgia,'Times New Roman',serif; font-style:normal; color:var(--accent); letter-spacing:-.035em; }
+    .hero-bottom { display:flex; align-items:end; justify-content:space-between; gap:3rem; }
+    .intro { max-width:550px; font-size:clamp(1.15rem,2.5vw,1.5rem); line-height:1.5; margin:0; color:var(--muted); }
+    .text-link { flex-shrink:0; font-size:.95rem; }
+    section { padding:46px 0 60px; border-top:1px solid var(--line); }
+    .section-grid { display:grid; grid-template-columns:1fr 2fr; gap:48px; }
+    .label { margin:0; font-size:.9rem; font-weight:normal; }
+    .label small { margin-right:16px; font-size:.8rem; color:var(--muted); }
+    .about-text { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.5rem,3vw,2rem); line-height:1.45; margin:0 0 24px; letter-spacing:-.02em; }
+    .support { color:var(--muted); margin:0; max-width:580px; }
+    .publication { padding:25px 0; border-bottom:1px solid var(--line); }
+    .publication:first-child { padding-top:0; }
+    .pub-meta { font-size:.8rem; color:var(--accent); margin:0 0 10px; }
+    .publication h3 { font-size:1.3rem; line-height:1.4; font-weight:500; margin:0 0 10px; }
+    .publication h3 a { text-decoration:none; }
+    .publication h3 a:hover { text-decoration:underline; }
+    .authors { margin:0; color:var(--muted); font-size:.9rem; }
+    .contact { background:var(--accent); color:white; padding:54px; margin-bottom:42px; border:0; }
+    .contact .eyebrow { color:#e6eef5; margin-bottom:18px; }
+    .contact h2 { font-family:Georgia,'Times New Roman',serif; font-weight:normal; font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.1; letter-spacing:-.04em; margin:0 0 30px; }
+    .contact a { font-size:clamp(1rem,2.5vw,1.4rem); overflow-wrap:anywhere; }
+    .contact a:hover { color:white; text-decoration-thickness:3px; }
+    .contact a:focus-visible { outline-color:white; }
+    footer { display:flex; justify-content:space-between; gap:1rem; padding:0 0 30px; color:var(--muted); font-size:.8rem; }
+    @media(max-width:700px) {
+      .wrap { width:calc(100% - 40px); }
+      header { padding:22px 0; gap:16px; align-items:start; flex-direction:column; }
+      nav { gap:15px; padding-top:6px; }
+      .hero { padding:52px 0 46px; }
+      .hero-bottom { align-items:start; flex-direction:column; gap:26px; }
+      .section-grid { grid-template-columns:1fr; gap:30px; }
+      section { padding:32px 0 42px; }
+      .contact { padding:32px 24px; margin-bottom:28px; }
+      footer { flex-wrap:wrap; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  
+    .publications-hero h1 { font-size:clamp(2.6rem,6.5vw,5.5rem); letter-spacing:-.04em; overflow-wrap:normal; }
+    .publications-hero h1 span { letter-spacing:-.035em; }
+    .publications-hero .intro { font-size:1.15rem; }
+    .jump-links { display:flex; flex-wrap:wrap; gap:12px 28px; margin:30px 0 0; font-size:.9rem; }
+    nav a[aria-current="page"] { color:var(--accent); text-decoration:underline; }
+    .paper-links { display:flex; gap:22px; font-size:.85rem; margin:14px 0 0; }
+    .authors strong { font-weight:600; color:var(--ink); }
+    .publication:last-child { border-bottom:0; }
+  
+    :root { color-scheme:light; --contact-bg:#506b85; }
+    :root[data-theme="dark"] {
+      color-scheme:dark;
+      --paper:#1b222a; --ink:#e8eef4; --muted:#aebdcb;
+      --accent:#9bb8d2; --line:#374451; --contact-bg:#33485b;
+    }
+    .skip { background:var(--paper); }
+    .contact { background:var(--contact-bg); }
+    header nav { align-items:center; }
+    .theme-toggle {
+      font:inherit; font-size:.875rem; line-height:1.3; color:var(--ink);
+      background:transparent; border:1px solid var(--line); border-radius:6px;
+      min-height:44px; padding:8px 12px; cursor:pointer;
+    }
+    .theme-toggle:hover { color:var(--accent); border-color:var(--accent); }
+    .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+  
+    .theme-toggle {
+      width:36px; height:36px; min-height:36px; padding:8px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border:0; border-radius:50%; flex-shrink:0;
+    }
+    .theme-toggle[hidden] { display:none; }
+    .theme-toggle:hover { background:var(--line); }
+    .theme-toggle svg { flex-shrink:0; }
+    .theme-sun { display:none; }
+    :root[data-theme="dark"] .theme-moon { display:none; }
+    :root[data-theme="dark"] .theme-sun { display:block; }
+    footer { flex-wrap:wrap; align-items:center; }
+    .profile-links { gap:12px 22px; font-size:.875rem; }
+    @media(pointer:coarse) { .theme-toggle { width:44px; height:44px; } }
+    @media(max-width:700px) { .profile-links { flex-basis:100%; order:-1; padding:0 0 8px; } }
+  
+    .paper-main { max-width:850px; margin:0 auto; padding:44px 0 64px; }
+    .paper-back { font-size:.9rem; color:var(--muted); }
+    .paper-heading { padding:36px 0 32px; }
+    .paper-heading .eyebrow { margin-bottom:16px; }
+    .paper-heading h1 { font-size:clamp(1.9rem,3.6vw,3.15rem); line-height:1.22; letter-spacing:-.025em; font-weight:500; margin:0 0 24px; overflow-wrap:break-word; }
+    .paper-heading .authors { font-size:1rem; line-height:1.7; }
+    .paper-heading .pub-meta { font-size:.95rem; margin-top:16px; }
+    .paper-heading .paper-links { font-size:.95rem; gap:24px; }
+    .paper-lead { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.25rem,2.3vw,1.55rem); line-height:1.6; margin:0 0 36px; }
+    .paper-section { padding:28px 0; }
+    .paper-section h2 { font-size:1.3rem; font-weight:500; letter-spacing:-.015em; margin:0 0 22px; }
+    .paper-section h3 { font-size:1.05rem; line-height:1.5; margin:0 0 8px; font-weight:600; }
+    .paper-section p { font-size:1.05rem; line-height:1.8; margin:0; color:var(--muted); }
+    .finding + .finding { margin-top:24px; }
+    .paper-source { padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:.875rem; line-height:1.7; }
+    .paper-source p { margin:0 0 10px; }
+    @media(max-width:700px) {
+      .paper-main { padding:28px 0 44px; }
+      .paper-heading { padding:28px 0; }
+      .paper-section { padding:24px 0; }
+    }
+  
+  
+    .paper-figure { margin:0 0 44px; padding-top:28px; border-top:1px solid var(--line); }
+    .paper-figure h2 { font-family:Georgia,serif; font-weight:normal; font-size:1.55rem; line-height:1.35; margin:0 0 20px; }
+    .paper-figure .figure-image { display:block; padding:16px; background:#fff; border:1px solid var(--line); border-radius:4px; }
+    .paper-figure img { display:block; width:100%; height:auto; max-height:690px; object-fit:contain; }
+    .paper-figure figcaption { margin:14px 0 22px; font-size:.87rem; color:var(--muted); line-height:1.6; }
+    .figure-guide { display:grid; grid-template-columns:1fr; gap:16px; }
+    .figure-guide p { margin:0; font-size:.98rem; line-height:1.65; }
+    .figure-guide strong { display:block; color:var(--ink); font-weight:600; margin-bottom:3px; }
+    .figure-open { display:inline-block; margin-top:8px; }
+    @media(max-width:700px) { .paper-figure .figure-image { padding:8px; } }
+  
+    .paper-figure .figure-image { padding:0; border:0; background:transparent; }
+    .drawing-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:#fff; }
+    .drawing-scroll svg { display:block; width:100%; min-width:680px; height:auto; }
+    .drawing-hint { font-size:.8rem; color:var(--muted); margin:8px 0 0; }
+  
+    .paper-figure .figure-image { padding:0; border:0; background:transparent; }
+    .drawing-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:#fff; }
+    .drawing-scroll svg { display:block; width:100%; min-width:680px; height:auto; }
+    .drawing-hint { font-size:.8rem; color:var(--muted); margin:8px 0 0; }
+  
+    .math-section h3 { margin-top:26px; }
+    .math-section h3:first-of-type { margin-top:0; }
+    .math-section p + p { margin-top:15px; }
+    .equation { overflow-x:auto; padding:20px 22px; margin:20px 0; border-left:2px solid var(--accent); background:color-mix(in srgb,var(--accent) 6%,var(--paper)); font-family:Georgia,'Times New Roman',serif; font-size:1.15rem; line-height:1.8; white-space:nowrap; }
+    .fraction { display:inline-flex; vertical-align:middle; flex-direction:column; text-align:center; line-height:1.5; margin:0 .2em; }
+    .fraction > span:first-child { border-bottom:1px solid currentColor; padding:0 .25em; }
+    .matrix { display:inline-flex; vertical-align:middle; flex-direction:column; border-left:1px solid currentColor; border-right:1px solid currentColor; padding:3px 12px; }
+    .matrix-row { display:grid; grid-template-columns:repeat(3,minmax(82px,1fr)); gap:12px; text-align:center; }
+  
+    .equation { font-family:inherit; font-size:1rem; white-space:normal; padding:22px 20px; }
+    .equation .katex-display { margin:0; text-align:left; }
+    .equation .katex-display > .katex { text-align:left; }
+    @media(max-width:600px) { .equation { font-size:.9rem; padding:18px 14px; } }
+  
+    .article-story .story-section { padding:24px 0 12px; border-top:0; }
+    .article-story .story-section:first-child { padding-top:0; }
+    .article-story h2 { font-size:1.4rem; font-weight:500; letter-spacing:-.015em; line-height:1.35; margin:0 0 20px; }
+    .article-story p { font-size:1.05rem; line-height:1.85; color:var(--muted); margin:0 0 20px; }
+    .article-story strong { color:var(--ink); font-weight:600; }
+    .article-story .paper-figure { margin:30px 0; padding:0; border:0; }
+    .article-story figcaption { font-size:.86rem; line-height:1.65; }
+    .research-note { border-left:2px solid var(--accent); padding:8px 0 8px 20px; margin:24px 0; color:var(--muted); font-size:1rem; line-height:1.7; }
+    .article-story .equation { margin:24px 0; }
+    .paper-source { margin-top:34px; }
+  </style>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+</head>
+<!-- Summary source: https://doi.org/10.1021/acsphotonics.4c02284 -->
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header><a class="wordmark" href="../index.html">Jungmin Kim</a>
+<nav aria-label="Main navigation"><a href="../index.html#about">About</a><a href="../publications.html" aria-current="page">Publications</a><a href="../cv.pdf">CV</a><a href="../index.html#contact">Contact</a><button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
+          <svg class="theme-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13a8.5 8.5 0 0 1-9.5-9.5A8.5 8.5 0 1 0 20.5 13Z"/></svg>
+          <svg class="theme-sun" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button></nav></header>
+<main id="main" class="paper-main">
+      <a class="paper-back" href="../publications.html">All publications</a>
+      <div class="paper-heading">
+        <p class="eyebrow">Research article</p>
+        <h1>Compute-First Optical Detection for Noise-Resilient Visual Perception</h1>
+        <p class="authors"><strong>Jungmin Kim</strong>, Nanfang Yu &amp; Zongfu Yu</p>
+        <p class="pub-meta">ACS Photonics 12, 1137-1145 (2025)</p>
+        <nav class="paper-links" aria-label="Read the original paper"><a href="https://doi.org/10.1021/acsphotonics.4c02284">Publisher page</a><a href="../papers/acsphoton.pdf">Read PDF</a></nav>
+      </div>
+      <p class="paper-lead">A camera normally detects an image before software extracts useful features. This paper asks whether some of that processing should happen in light, before detector noise is added.</p>
+<div class="article-story"><section class="story-section"><h2>The order of operations changes the problem</h2><p>In a detect-first pipeline, weak optical signals become noisy electronic measurements before a classifier sees them. The proposed system inserts a linear optical transformation ahead of the detector, so the sensor measures a representation designed for the recognition task.</p><p>That optical transformation does not need to form a conventional-looking image. It needs to preserve and redistribute the information that helps the downstream classifier make a decision.</p></section><figure class="paper-figure"><div class="drawing-scroll" tabindex="0" role="region" aria-label="Scientific schematic; horizontally scrollable on small screens"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 335" role="img" aria-labelledby="drawing-title drawing-desc" font-family="Arial,Helvetica,sans-serif"><title id="drawing-title">Compute before the noise enters</title><desc id="drawing-desc">The optical stage redistributes light before photodetection. A digital classifier then uses the noisy detector outputs. Line weights suggest signal concentration, not simulated intensities.</desc><rect width="900" height="335" fill="white"/><text x="42" y="45" font-size="17" fill="#30383e" text-anchor="start" font-weight="600">Image-bearing light</text><text x="329" y="45" font-size="17" fill="#30383e" text-anchor="start" font-weight="600">Redistribute before detection</text><text x="687" y="45" font-size="17" fill="#30383e" text-anchor="start" font-weight="600">Read out + classify</text><path d="M49.00 101.00 L50.04 101.63 L51.08 102.24 L52.12 102.84 L53.16 103.41 L54.20 103.94 L55.24 104.42 L56.28 104.85 L57.32 105.22 L58.36 105.52 L59.40 105.76 L60.44 105.91 L61.48 105.99 L62.52 105.99 L63.56 105.91 L64.60 105.76 L65.64 105.52 L66.68 105.22 L67.72 104.85 L68.76 104.42 L69.80 103.94 L70.84 103.41 L71.88 102.84 L72.92 102.24 L73.96 101.63 L75.00 101.00 L76.04 100.37 L77.08 99.76 L78.12 99.16 L79.16 98.59 L80.20 98.06 L81.24 97.58 L82.28 97.15 L83.32 96.78 L84.36 96.48 L85.40 96.24 L86.44 96.09 L87.48 96.01 L88.52 96.01 L89.56 96.09 L90.60 96.24 L91.64 96.48 L92.68 96.78 L93.72 97.15 L94.76 97.58 L95.80 98.06 L96.84 98.59 L97.88 99.16 L98.92 99.76 L99.96 100.37 L101.00 101.00 L102.04 101.63 L103.08 102.24 L104.12 102.84 L105.16 103.41 L106.20 103.94 L107.24 104.42 L108.28 104.85 L109.32 105.22 L110.36 105.52 L111.40 105.76 L112.44 105.91 L113.48 105.99 L114.52 105.99 L115.56 105.91 L116.60 105.76 L117.64 105.52 L118.68 105.22 L119.72 104.85 L120.76 104.42 L121.80 103.94 L122.84 103.41 L123.88 102.84 L124.92 102.24 L125.96 101.63 L127.00 101.00 L128.04 100.37 L129.08 99.76 L130.12 99.16 L131.16 98.59 L132.20 98.06 L133.24 97.58 L134.28 97.15 L135.32 96.78 L136.36 96.48 L137.40 96.24 L138.44 96.09 L139.48 96.01 L140.52 96.01 L141.56 96.09 L142.60 96.24 L143.64 96.48 L144.68 96.78 L145.72 97.15 L146.76 97.58 L147.80 98.06 L148.84 98.59 L149.88 99.16 L150.92 99.76 L151.96 100.37 L153.00 101.00" stroke="#496b92" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M170 101 C245 101 295 132 350 132" stroke="#496b92" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M49.00 126.00 L50.04 126.63 L51.08 127.24 L52.12 127.84 L53.16 128.41 L54.20 128.94 L55.24 129.42 L56.28 129.85 L57.32 130.22 L58.36 130.52 L59.40 130.76 L60.44 130.91 L61.48 130.99 L62.52 130.99 L63.56 130.91 L64.60 130.76 L65.64 130.52 L66.68 130.22 L67.72 129.85 L68.76 129.42 L69.80 128.94 L70.84 128.41 L71.88 127.84 L72.92 127.24 L73.96 126.63 L75.00 126.00 L76.04 125.37 L77.08 124.76 L78.12 124.16 L79.16 123.59 L80.20 123.06 L81.24 122.58 L82.28 122.15 L83.32 121.78 L84.36 121.48 L85.40 121.24 L86.44 121.09 L87.48 121.01 L88.52 121.01 L89.56 121.09 L90.60 121.24 L91.64 121.48 L92.68 121.78 L93.72 122.15 L94.76 122.58 L95.80 123.06 L96.84 123.59 L97.88 124.16 L98.92 124.76 L99.96 125.37 L101.00 126.00 L102.04 126.63 L103.08 127.24 L104.12 127.84 L105.16 128.41 L106.20 128.94 L107.24 129.42 L108.28 129.85 L109.32 130.22 L110.36 130.52 L111.40 130.76 L112.44 130.91 L113.48 130.99 L114.52 130.99 L115.56 130.91 L116.60 130.76 L117.64 130.52 L118.68 130.22 L119.72 129.85 L120.76 129.42 L121.80 128.94 L122.84 128.41 L123.88 127.84 L124.92 127.24 L125.96 126.63 L127.00 126.00 L128.04 125.37 L129.08 124.76 L130.12 124.16 L131.16 123.59 L132.20 123.06 L133.24 122.58 L134.28 122.15 L135.32 121.78 L136.36 121.48 L137.40 121.24 L138.44 121.09 L139.48 121.01 L140.52 121.01 L141.56 121.09 L142.60 121.24 L143.64 121.48 L144.68 121.78 L145.72 122.15 L146.76 122.58 L147.80 123.06 L148.84 123.59 L149.88 124.16 L150.92 124.76 L151.96 125.37 L153.00 126.00" stroke="#496b92" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M170 126 C245 126 295 144 350 144" stroke="#496b92" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M49.00 151.00 L50.04 151.63 L51.08 152.24 L52.12 152.84 L53.16 153.41 L54.20 153.94 L55.24 154.42 L56.28 154.85 L57.32 155.22 L58.36 155.52 L59.40 155.76 L60.44 155.91 L61.48 155.99 L62.52 155.99 L63.56 155.91 L64.60 155.76 L65.64 155.52 L66.68 155.22 L67.72 154.85 L68.76 154.42 L69.80 153.94 L70.84 153.41 L71.88 152.84 L72.92 152.24 L73.96 151.63 L75.00 151.00 L76.04 150.37 L77.08 149.76 L78.12 149.16 L79.16 148.59 L80.20 148.06 L81.24 147.58 L82.28 147.15 L83.32 146.78 L84.36 146.48 L85.40 146.24 L86.44 146.09 L87.48 146.01 L88.52 146.01 L89.56 146.09 L90.60 146.24 L91.64 146.48 L92.68 146.78 L93.72 147.15 L94.76 147.58 L95.80 148.06 L96.84 148.59 L97.88 149.16 L98.92 149.76 L99.96 150.37 L101.00 151.00 L102.04 151.63 L103.08 152.24 L104.12 152.84 L105.16 153.41 L106.20 153.94 L107.24 154.42 L108.28 154.85 L109.32 155.22 L110.36 155.52 L111.40 155.76 L112.44 155.91 L113.48 155.99 L114.52 155.99 L115.56 155.91 L116.60 155.76 L117.64 155.52 L118.68 155.22 L119.72 154.85 L120.76 154.42 L121.80 153.94 L122.84 153.41 L123.88 152.84 L124.92 152.24 L125.96 151.63 L127.00 151.00 L128.04 150.37 L129.08 149.76 L130.12 149.16 L131.16 148.59 L132.20 148.06 L133.24 147.58 L134.28 147.15 L135.32 146.78 L136.36 146.48 L137.40 146.24 L138.44 146.09 L139.48 146.01 L140.52 146.01 L141.56 146.09 L142.60 146.24 L143.64 146.48 L144.68 146.78 L145.72 147.15 L146.76 147.58 L147.80 148.06 L148.84 148.59 L149.88 149.16 L150.92 149.76 L151.96 150.37 L153.00 151.00" stroke="#496b92" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M170 151 C245 151 295 156 350 156" stroke="#496b92" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M49.00 176.00 L50.04 176.63 L51.08 177.24 L52.12 177.84 L53.16 178.41 L54.20 178.94 L55.24 179.42 L56.28 179.85 L57.32 180.22 L58.36 180.52 L59.40 180.76 L60.44 180.91 L61.48 180.99 L62.52 180.99 L63.56 180.91 L64.60 180.76 L65.64 180.52 L66.68 180.22 L67.72 179.85 L68.76 179.42 L69.80 178.94 L70.84 178.41 L71.88 177.84 L72.92 177.24 L73.96 176.63 L75.00 176.00 L76.04 175.37 L77.08 174.76 L78.12 174.16 L79.16 173.59 L80.20 173.06 L81.24 172.58 L82.28 172.15 L83.32 171.78 L84.36 171.48 L85.40 171.24 L86.44 171.09 L87.48 171.01 L88.52 171.01 L89.56 171.09 L90.60 171.24 L91.64 171.48 L92.68 171.78 L93.72 172.15 L94.76 172.58 L95.80 173.06 L96.84 173.59 L97.88 174.16 L98.92 174.76 L99.96 175.37 L101.00 176.00 L102.04 176.63 L103.08 177.24 L104.12 177.84 L105.16 178.41 L106.20 178.94 L107.24 179.42 L108.28 179.85 L109.32 180.22 L110.36 180.52 L111.40 180.76 L112.44 180.91 L113.48 180.99 L114.52 180.99 L115.56 180.91 L116.60 180.76 L117.64 180.52 L118.68 180.22 L119.72 179.85 L120.76 179.42 L121.80 178.94 L122.84 178.41 L123.88 177.84 L124.92 177.24 L125.96 176.63 L127.00 176.00 L128.04 175.37 L129.08 174.76 L130.12 174.16 L131.16 173.59 L132.20 173.06 L133.24 172.58 L134.28 172.15 L135.32 171.78 L136.36 171.48 L137.40 171.24 L138.44 171.09 L139.48 171.01 L140.52 171.01 L141.56 171.09 L142.60 171.24 L143.64 171.48 L144.68 171.78 L145.72 172.15 L146.76 172.58 L147.80 173.06 L148.84 173.59 L149.88 174.16 L150.92 174.76 L151.96 175.37 L153.00 176.00" stroke="#496b92" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M170 176 C245 176 295 168 350 168" stroke="#496b92" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M49.00 201.00 L50.04 201.63 L51.08 202.24 L52.12 202.84 L53.16 203.41 L54.20 203.94 L55.24 204.42 L56.28 204.85 L57.32 205.22 L58.36 205.52 L59.40 205.76 L60.44 205.91 L61.48 205.99 L62.52 205.99 L63.56 205.91 L64.60 205.76 L65.64 205.52 L66.68 205.22 L67.72 204.85 L68.76 204.42 L69.80 203.94 L70.84 203.41 L71.88 202.84 L72.92 202.24 L73.96 201.63 L75.00 201.00 L76.04 200.37 L77.08 199.76 L78.12 199.16 L79.16 198.59 L80.20 198.06 L81.24 197.58 L82.28 197.15 L83.32 196.78 L84.36 196.48 L85.40 196.24 L86.44 196.09 L87.48 196.01 L88.52 196.01 L89.56 196.09 L90.60 196.24 L91.64 196.48 L92.68 196.78 L93.72 197.15 L94.76 197.58 L95.80 198.06 L96.84 198.59 L97.88 199.16 L98.92 199.76 L99.96 200.37 L101.00 201.00 L102.04 201.63 L103.08 202.24 L104.12 202.84 L105.16 203.41 L106.20 203.94 L107.24 204.42 L108.28 204.85 L109.32 205.22 L110.36 205.52 L111.40 205.76 L112.44 205.91 L113.48 205.99 L114.52 205.99 L115.56 205.91 L116.60 205.76 L117.64 205.52 L118.68 205.22 L119.72 204.85 L120.76 204.42 L121.80 203.94 L122.84 203.41 L123.88 202.84 L124.92 202.24 L125.96 201.63 L127.00 201.00 L128.04 200.37 L129.08 199.76 L130.12 199.16 L131.16 198.59 L132.20 198.06 L133.24 197.58 L134.28 197.15 L135.32 196.78 L136.36 196.48 L137.40 196.24 L138.44 196.09 L139.48 196.01 L140.52 196.01 L141.56 196.09 L142.60 196.24 L143.64 196.48 L144.68 196.78 L145.72 197.15 L146.76 197.58 L147.80 198.06 L148.84 198.59 L149.88 199.16 L150.92 199.76 L151.96 200.37 L153.00 201.00" stroke="#496b92" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M170 201 C245 201 295 180 350 180" stroke="#496b92" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="352" y="84" width="152" height="150" rx="6" fill="#edf2f8" stroke="#496b92" stroke-width="1.4"/><text x="428" y="125" font-size="17" fill="#496b92" text-anchor="middle" font-weight="400">Optical</text><text x="428" y="150" font-size="16" fill="#496b92" text-anchor="middle" font-weight="400">transformation</text><text x="428" y="196" font-size="16" fill="#30383e" text-anchor="middle" font-weight="400">Eout = P Ein</text><path d="M506 113 C547 113 574 113 614 113" stroke="#496b92" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="620" y="105" width="19" height="16" rx="2" fill="#e5eaef" stroke="#69737b" stroke-width="1.4"/><path d="M506 136 C547 136 574 136 614 136" stroke="#496b92" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="620" y="128" width="19" height="16" rx="2" fill="#e5eaef" stroke="#69737b" stroke-width="1.4"/><path d="M506 159 C547 159 574 159 614 159" stroke="#496b92" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="620" y="151" width="19" height="16" rx="2" fill="#b5c4d5" stroke="#69737b" stroke-width="1.4"/><path d="M506 182 C547 182 574 182 614 182" stroke="#496b92" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="620" y="174" width="19" height="16" rx="2" fill="#e5eaef" stroke="#69737b" stroke-width="1.4"/><path d="M506 205 C547 205 574 205 614 205" stroke="#496b92" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="620" y="197" width="19" height="16" rx="2" fill="#e5eaef" stroke="#69737b" stroke-width="1.4"/><path d="M657 159L704 159" stroke="#30383e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#30383e" stroke-width="2" transform="translate(704 159) rotate(0.0)"/><rect x="714" y="129" width="141" height="60" rx="6" fill="white" stroke="#d8dde0" stroke-width="1.4"/><text x="784.5" y="164.0" font-size="15" fill="#30383e" text-anchor="middle" font-weight="400">Prediction</text><path d="M629 274L629 230" stroke="#aa663d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#aa663d" stroke-width="2" transform="translate(629 230) rotate(-90.0)"/><text x="629" y="301" font-size="14" fill="#aa663d" text-anchor="middle" font-weight="400">Detection noise</text><text x="430" y="276" font-size="14" fill="#69737b" text-anchor="middle" font-weight="400">Useful signal is concentrated optically</text></svg></div><figcaption>The optical stage redistributes light before photodetection. A digital classifier then uses the noisy detector outputs. Line weights suggest signal concentration, not simulated intensities. Original explanatory drawing, not to scale. <a href="https://doi.org/10.1021/acsphotonics.4c02284">Source paper</a> · <a href="../assets/figures/compute-first-optical-detection.svg" target="_blank" rel="noopener">Full-size drawing ↗</a></figcaption></figure><section class="story-section"><h2>Redistribution, not optical amplification</h2><div class="equation" role="math" aria-label="Linear optical processing precedes noisy intensity detection at pixel alpha."><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi mathvariant="bold">E</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">t</mi></mrow></msup><mo>=</mo><mi>P</mi><msup><mi mathvariant="bold">E</mi><mrow><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi></mrow></msup><mo separator="true">,</mo><mspace width="2em"/><msub><mi>x</mi><mi>α</mi></msub><mo>=</mo><mi mathvariant="normal">∣</mi><msubsup><mi>E</mi><mi>α</mi><mrow><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">t</mi></mrow></msubsup><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">Δ</mi><msub><mi>I</mi><mrow><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi></mrow><mo separator="true">,</mo><mi>α</mi></mrow></msub><mo>+</mo><mi mathvariant="normal">Δ</mi><msub><mi>I</mi><mrow><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">k</mi></mrow><mo separator="true">,</mo><mi>α</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathbf E^{\mathrm{out}}=P\mathbf E^{\mathrm{in}},\qquad x_\alpha=|E_\alpha^{\mathrm{out}}|^2+\Delta I_{\mathrm{photon},\alpha}+\Delta I_{\mathrm{dark},\alpha}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8436em;"></span><span class="mord"><span class="mord mathbf">E</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8436em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">out</span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0749em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord"><span class="mord mathbf">E</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8805em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">in</span></span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8436em;"><span style="top:-2.453em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">out</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">photon</span></span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">dark</span></span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span></div><p>The field transformation <i>P</i> precedes intensity detection at channel α. In the discrete model, <i>P</i> is unitary: it conserves total optical energy while redistributing it among channels. A digital network maps the resulting noisy intensity vector to a prediction.</p><p>This distinction explains the noise benefit. Concentrating useful signal into selected channels can make it less vulnerable to intensity-independent dark noise. Photon noise still depends on the signal, so rearranging the light does not eliminate the statistics of photon detection. The paper treats both noise mechanisms explicitly.</p></section><section class="story-section"><h2>Learn what the detector should receive</h2><p>The optical transformation and digital classifier are optimized together for visual recognition. MNIST provides a controlled benchmark for examining how redistribution affects accuracy as detection noise increases. The study then considers an incoherent imaging implementation with designed phase masks, moving beyond the abstract matrix description.</p><p>The numerical results connect noise resilience to how the optical stage concentrates task-relevant signal. They suggest that the best measurement for a recognition task need not be the best conventional image.</p><p>The analysis focuses on photon and dark noise. Alignment errors, fabrication variation, and noise within a larger optical processor would require additional assessment before translating the result into a complete imaging system.</p></section></div>
+      <div class="paper-source"><p>Source: Full paper: abstract, Figure 5, and Conclusion. <a href="../papers/acsphoton.pdf">Read the source paper</a>.</p><a href="../publications.html">Back to all publications</a></div>
+    </main>
+<footer><nav class="profile-links" aria-label="Professional profiles"><a href="https://scholar.google.com/citations?user=AGjDgr0AAAAJ">Google Scholar</a><a href="https://www.linkedin.com/in/jmkim93">LinkedIn</a><a href="https://orcid.org/0000-0001-8567-5338">ORCID</a></nav><span>© Jungmin Kim</span><a href="../index.html">Home</a><a href="#top">Back to top</a></footer>
+</div>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const button = document.querySelector('.theme-toggle');
+      const system = matchMedia('(prefers-color-scheme: dark)');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      function savedTheme() {
+        try { return localStorage.getItem('jm-theme'); } catch (_) { return null; }
+      }
+      function apply(theme) {
+        root.dataset.theme = theme;
+        const dark = theme === 'dark';
+        button.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+        button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        meta.content = dark ? '#1b222a' : '#506b85';
+      }
+      function sync() {
+        const saved = savedTheme();
+        apply(saved === 'light' || saved === 'dark' ? saved : (system.matches ? 'dark' : 'light'));
+      }
+      apply(root.dataset.theme);
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try { localStorage.setItem('jm-theme', next); } catch (_) {}
+      });
+      system.addEventListener('change', () => {
+        if (!['light', 'dark'].includes(savedTheme())) sync();
+      });
+      window.addEventListener('storage', event => {
+        if (event.key === 'jm-theme' || event.key === null) sync();
+      });
+      window.addEventListener('pageshow', sync);
+    })();
+  </script>
+</body></html>

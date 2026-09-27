@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Can a medium control scattering direction without any spatial pattern? This paper shows how correlations in its time variation can provide that control.">
+  <meta name="theme-color" content="#506b85">
+  <title>Unidirectional scattering with spatial homogeneity using correlated photonic time disorder | Jungmin Kim</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23506b85'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia' font-size='23' fill='white'%3Ej%3C/text%3E%3C/svg%3E">
+  <script>
+    (() => {
+      let saved;
+      try { saved = localStorage.getItem('jm-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
+        ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    /* Edit these colors to make the page your own. No external files required. */
+    :root { --paper:#f6f8fa; --ink:#293440; --muted:#626f7d; --accent:#506b85; --line:#d9e1e8; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:2rem; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:1.65; }
+    a { color:inherit; text-underline-offset:5px; }
+    a:hover { color:var(--accent); }
+    a:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:6px; }
+    .skip { position:absolute; left:1rem; top:-6rem; padding:.6rem 1rem; background:white; z-index:5; }
+    .skip:focus { top:1rem; }
+    .wrap { width:min(1120px,calc(100% - 96px)); margin:auto; }
+    header { display:flex; justify-content:space-between; gap:2rem; align-items:center; padding:30px 0; border-bottom:1px solid var(--line); }
+    .wordmark { font-family:Georgia,serif; font-size:1.5rem; font-weight:bold; text-decoration:none; }
+    nav { display:flex; flex-wrap:wrap; gap:28px; font-size:.9rem; }
+    nav a { text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    .hero { padding:72px 0 64px; }
+    .eyebrow { margin:0 0 26px; font-size:.8rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+    h1 { font-size:clamp(3rem,7.5vw,6.25rem); line-height:1.12; font-weight:500; letter-spacing:-.04em; margin:0 0 30px; }
+    h1 span { font-family:Georgia,'Times New Roman',serif; font-style:normal; color:var(--accent); letter-spacing:-.035em; }
+    .hero-bottom { display:flex; align-items:end; justify-content:space-between; gap:3rem; }
+    .intro { max-width:550px; font-size:clamp(1.15rem,2.5vw,1.5rem); line-height:1.5; margin:0; color:var(--muted); }
+    .text-link { flex-shrink:0; font-size:.95rem; }
+    section { padding:46px 0 60px; border-top:1px solid var(--line); }
+    .section-grid { display:grid; grid-template-columns:1fr 2fr; gap:48px; }
+    .label { margin:0; font-size:.9rem; font-weight:normal; }
+    .label small { margin-right:16px; font-size:.8rem; color:var(--muted); }
+    .about-text { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.5rem,3vw,2rem); line-height:1.45; margin:0 0 24px; letter-spacing:-.02em; }
+    .support { color:var(--muted); margin:0; max-width:580px; }
+    .publication { padding:25px 0; border-bottom:1px solid var(--line); }
+    .publication:first-child { padding-top:0; }
+    .pub-meta { font-size:.8rem; color:var(--accent); margin:0 0 10px; }
+    .publication h3 { font-size:1.3rem; line-height:1.4; font-weight:500; margin:0 0 10px; }
+    .publication h3 a { text-decoration:none; }
+    .publication h3 a:hover { text-decoration:underline; }
+    .authors { margin:0; color:var(--muted); font-size:.9rem; }
+    .contact { background:var(--accent); color:white; padding:54px; margin-bottom:42px; border:0; }
+    .contact .eyebrow { color:#e6eef5; margin-bottom:18px; }
+    .contact h2 { font-family:Georgia,'Times New Roman',serif; font-weight:normal; font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.1; letter-spacing:-.04em; margin:0 0 30px; }
+    .contact a { font-size:clamp(1rem,2.5vw,1.4rem); overflow-wrap:anywhere; }
+    .contact a:hover { color:white; text-decoration-thickness:3px; }
+    .contact a:focus-visible { outline-color:white; }
+    footer { display:flex; justify-content:space-between; gap:1rem; padding:0 0 30px; color:var(--muted); font-size:.8rem; }
+    @media(max-width:700px) {
+      .wrap { width:calc(100% - 40px); }
+      header { padding:22px 0; gap:16px; align-items:start; flex-direction:column; }
+      nav { gap:15px; padding-top:6px; }
+      .hero { padding:52px 0 46px; }
+      .hero-bottom { align-items:start; flex-direction:column; gap:26px; }
+      .section-grid { grid-template-columns:1fr; gap:30px; }
+      section { padding:32px 0 42px; }
+      .contact { padding:32px 24px; margin-bottom:28px; }
+      footer { flex-wrap:wrap; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  
+    .publications-hero h1 { font-size:clamp(2.6rem,6.5vw,5.5rem); letter-spacing:-.04em; overflow-wrap:normal; }
+    .publications-hero h1 span { letter-spacing:-.035em; }
+    .publications-hero .intro { font-size:1.15rem; }
+    .jump-links { display:flex; flex-wrap:wrap; gap:12px 28px; margin:30px 0 0; font-size:.9rem; }
+    nav a[aria-current="page"] { color:var(--accent); text-decoration:underline; }
+    .paper-links { display:flex; gap:22px; font-size:.85rem; margin:14px 0 0; }
+    .authors strong { font-weight:600; color:var(--ink); }
+    .publication:last-child { border-bottom:0; }
+  
+    :root { color-scheme:light; --contact-bg:#506b85; }
+    :root[data-theme="dark"] {
+      color-scheme:dark;
+      --paper:#1b222a; --ink:#e8eef4; --muted:#aebdcb;
+      --accent:#9bb8d2; --line:#374451; --contact-bg:#33485b;
+    }
+    .skip { background:var(--paper); }
+    .contact { background:var(--contact-bg); }
+    header nav { align-items:center; }
+    .theme-toggle {
+      font:inherit; font-size:.875rem; line-height:1.3; color:var(--ink);
+      background:transparent; border:1px solid var(--line); border-radius:6px;
+      min-height:44px; padding:8px 12px; cursor:pointer;
+    }
+    .theme-toggle:hover { color:var(--accent); border-color:var(--accent); }
+    .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+  
+    .theme-toggle {
+      width:36px; height:36px; min-height:36px; padding:8px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border:0; border-radius:50%; flex-shrink:0;
+    }
+    .theme-toggle[hidden] { display:none; }
+    .theme-toggle:hover { background:var(--line); }
+    .theme-toggle svg { flex-shrink:0; }
+    .theme-sun { display:none; }
+    :root[data-theme="dark"] .theme-moon { display:none; }
+    :root[data-theme="dark"] .theme-sun { display:block; }
+    footer { flex-wrap:wrap; align-items:center; }
+    .profile-links { gap:12px 22px; font-size:.875rem; }
+    @media(pointer:coarse) { .theme-toggle { width:44px; height:44px; } }
+    @media(max-width:700px) { .profile-links { flex-basis:100%; order:-1; padding:0 0 8px; } }
+  
+    .paper-main { max-width:850px; margin:0 auto; padding:44px 0 64px; }
+    .paper-back { font-size:.9rem; color:var(--muted); }
+    .paper-heading { padding:36px 0 32px; }
+    .paper-heading .eyebrow { margin-bottom:16px; }
+    .paper-heading h1 { font-size:clamp(1.9rem,3.6vw,3.15rem); line-height:1.22; letter-spacing:-.025em; font-weight:500; margin:0 0 24px; overflow-wrap:break-word; }
+    .paper-heading .authors { font-size:1rem; line-height:1.7; }
+    .paper-heading .pub-meta { font-size:.95rem; margin-top:16px; }
+    .paper-heading .paper-links { font-size:.95rem; gap:24px; }
+    .paper-lead { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.25rem,2.3vw,1.55rem); line-height:1.6; margin:0 0 36px; }
+    .paper-section { padding:28px 0; }
+    .paper-section h2 { font-size:1.3rem; font-weight:500; letter-spacing:-.015em; margin:0 0 22px; }
+    .paper-section h3 { font-size:1.05rem; line-height:1.5; margin:0 0 8px; font-weight:600; }
+    .paper-section p { font-size:1.05rem; line-height:1.8; margin:0; color:var(--muted); }
+    .finding + .finding { margin-top:24px; }
+    .paper-source { padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:.875rem; line-height:1.7; }
+    .paper-source p { margin:0 0 10px; }
+    @media(max-width:700px) {
+      .paper-main { padding:28px 0 44px; }
+      .paper-heading { padding:28px 0; }
+      .paper-section { padding:24px 0; }
+    }
+  
+  
+    .paper-figure { margin:0 0 44px; padding-top:28px; border-top:1px solid var(--line); }
+    .paper-figure h2 { font-family:Georgia,serif; font-weight:normal; font-size:1.55rem; line-height:1.35; margin:0 0 20px; }
+    .paper-figure .figure-image { display:block; padding:16px; background:#fff; border:1px solid var(--line); border-radius:4px; }
+    .paper-figure img { display:block; width:100%; height:auto; max-height:690px; object-fit:contain; }
+    .paper-figure figcaption { margin:14px 0 22px; font-size:.87rem; color:var(--muted); line-height:1.6; }
+    .figure-guide { display:grid; grid-template-columns:1fr; gap:16px; }
+    .figure-guide p { margin:0; font-size:.98rem; line-height:1.65; }
+    .figure-guide strong { display:block; color:var(--ink); font-weight:600; margin-bottom:3px; }
+    .figure-open { display:inline-block; margin-top:8px; }
+    @media(max-width:700px) { .paper-figure .figure-image { padding:8px; } }
+  
+    .paper-figure .figure-image { padding:0; border:0; background:transparent; }
+    .drawing-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:#fff; }
+    .drawing-scroll svg { display:block; width:100%; min-width:680px; height:auto; }
+    .drawing-hint { font-size:.8rem; color:var(--muted); margin:8px 0 0; }
+  
+    .paper-figure .figure-image { padding:0; border:0; background:transparent; }
+    .drawing-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:#fff; }
+    .drawing-scroll svg { display:block; width:100%; min-width:680px; height:auto; }
+    .drawing-hint { font-size:.8rem; color:var(--muted); margin:8px 0 0; }
+  
+    .math-section h3 { margin-top:26px; }
+    .math-section h3:first-of-type { margin-top:0; }
+    .math-section p + p { margin-top:15px; }
+    .equation { overflow-x:auto; padding:20px 22px; margin:20px 0; border-left:2px solid var(--accent); background:color-mix(in srgb,var(--accent) 6%,var(--paper)); font-family:Georgia,'Times New Roman',serif; font-size:1.15rem; line-height:1.8; white-space:nowrap; }
+    .fraction { display:inline-flex; vertical-align:middle; flex-direction:column; text-align:center; line-height:1.5; margin:0 .2em; }
+    .fraction > span:first-child { border-bottom:1px solid currentColor; padding:0 .25em; }
+    .matrix { display:inline-flex; vertical-align:middle; flex-direction:column; border-left:1px solid currentColor; border-right:1px solid currentColor; padding:3px 12px; }
+    .matrix-row { display:grid; grid-template-columns:repeat(3,minmax(82px,1fr)); gap:12px; text-align:center; }
+  
+    .equation { font-family:inherit; font-size:1rem; white-space:normal; padding:22px 20px; }
+    .equation .katex-display { margin:0; text-align:left; }
+    .equation .katex-display > .katex { text-align:left; }
+    @media(max-width:600px) { .equation { font-size:.9rem; padding:18px 14px; } }
+  
+    .article-story .story-section { padding:24px 0 12px; border-top:0; }
+    .article-story .story-section:first-child { padding-top:0; }
+    .article-story h2 { font-size:1.4rem; font-weight:500; letter-spacing:-.015em; line-height:1.35; margin:0 0 20px; }
+    .article-story p { font-size:1.05rem; line-height:1.85; color:var(--muted); margin:0 0 20px; }
+    .article-story strong { color:var(--ink); font-weight:600; }
+    .article-story .paper-figure { margin:30px 0; padding:0; border:0; }
+    .article-story figcaption { font-size:.86rem; line-height:1.65; }
+    .research-note { border-left:2px solid var(--accent); padding:8px 0 8px 20px; margin:24px 0; color:var(--muted); font-size:1rem; line-height:1.7; }
+    .article-story .equation { margin:24px 0; }
+    .paper-source { margin-top:34px; }
+  </style>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+</head>
+<!-- Summary source: https://doi.org/10.1038/s41567-023-01962-3 -->
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header><a class="wordmark" href="../index.html">Jungmin Kim</a>
+<nav aria-label="Main navigation"><a href="../index.html#about">About</a><a href="../publications.html" aria-current="page">Publications</a><a href="../cv.pdf">CV</a><a href="../index.html#contact">Contact</a><button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
+          <svg class="theme-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13a8.5 8.5 0 0 1-9.5-9.5A8.5 8.5 0 1 0 20.5 13Z"/></svg>
+          <svg class="theme-sun" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button></nav></header>
+<main id="main" class="paper-main">
+      <a class="paper-back" href="../publications.html">All publications</a>
+      <div class="paper-heading">
+        <p class="eyebrow">Research article</p>
+        <h1>Unidirectional scattering with spatial homogeneity using correlated photonic time disorder</h1>
+        <p class="authors"><strong>Jungmin Kim</strong>, Dayeong Lee, Sunkyu Yu &amp; Namkyoo Park</p>
+        <p class="pub-meta">Nature Physics 19, 726-732 (2023)</p>
+        <nav class="paper-links" aria-label="Read the original paper"><a href="https://doi.org/10.1038/s41567-023-01962-3">Publisher page</a><a href="../papers/natphys.pdf">Read PDF</a></nav>
+      </div>
+      <p class="paper-lead">Can a medium control scattering direction without any spatial pattern? This paper shows how correlations in its time variation can provide that control.</p>
+<div class="article-story"><section class="story-section"><h2>Disorder along the time axis</h2><p>Ordinary scattering engineering arranges material in space. Here the material remains spatially homogeneous, but its permittivity varies during a finite time interval. Spatial homogeneity preserves wavevector, while external modulation allows energy exchange with the optical field.</p><p>The crucial design variable is not simply how strongly the material fluctuates. It is how fluctuations at different times are correlated. Different temporal sequences can share the same statistics and therefore produce the same ensemble-averaged scattering behavior.</p></section><section class="story-section"><h2>Two spectral regions control two scattering channels</h2><p>Write the inverse permittivity as α(<i>t</i>) = α<sub>b</sub>[1 + Δα(<i>t</i>)]. The time structure factor <i>S</i>(Ω) is the Fourier transform of the autocorrelation of Δα. In the weak-scattering, long-modulation-time regime, the paper obtains</p><div class="equation" role="math" aria-label="Mean forward and backward scattering powers depend on the structure factor at zero and twice the background frequency."><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">⟨</mo><msub><mi>P</mi><mrow><mi mathvariant="normal">F</mi><mi mathvariant="normal">W</mi></mrow></msub><mo stretchy="false">⟩</mo><mo>≈</mo><mfrac><mrow><msubsup><mi>ω</mi><mi>b</mi><mn>2</mn></msubsup><mi>T</mi></mrow><mn>4</mn></mfrac><mi>S</mi><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo><mo separator="true">,</mo><mspace width="2em"/><mo stretchy="false">⟨</mo><msub><mi>P</mi><mrow><mi mathvariant="normal">B</mi><mi mathvariant="normal">W</mi></mrow></msub><mo stretchy="false">⟩</mo><mo>≈</mo><mfrac><mrow><msubsup><mi>ω</mi><mi>b</mi><mn>2</mn></msubsup><mi>T</mi></mrow><mn>4</mn></mfrac><mi>S</mi><mo stretchy="false">(</mo><mn>2</mn><msub><mi>ω</mi><mi>b</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\langle P_{\mathrm{FW}}\rangle\approx\frac{\omega_b^2T}{4}S(0),\qquad\langle P_{\mathrm{BW}}\rangle\approx\frac{\omega_b^2T}{4}S(2\omega_b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⟨</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">FW</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4169em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2831em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mopen">(</span><span class="mord">0</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">⟨</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.01389em;">BW</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">⟩</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">4</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4169em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2831em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mopen">(</span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div><p>Here <i>T</i> is the modulation duration and ω<sub>b</sub> is the background wave frequency. The powers refer to scattered components. Their dependence on different points of the same spectrum makes it possible to change one channel while suppressing the other.</p><figure class="paper-figure"><div class="drawing-scroll" tabindex="0" role="region" aria-label="Scientific schematic; horizontally scrollable on small screens"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 335" role="img" aria-labelledby="drawing-title drawing-desc" font-family="Arial,Helvetica,sans-serif"><title id="drawing-title">Control scattering through time variation</title><desc id="drawing-desc">The medium has no spatial pattern. Correlated temporal modulation exchanges energy with the field and tunes forward and backward scattering. The waveform and arrow strengths are qualitative.</desc><rect width="900" height="335" fill="white"/><rect x="295" y="119" width="295" height="119" rx="6" fill="#f0edf4" stroke="#827097" stroke-width="1.4"/><text x="442" y="158" font-size="18" fill="#827097" text-anchor="middle" font-weight="400">Uniform in space</text><text x="442" y="190" font-size="16" fill="#30383e" text-anchor="middle" font-weight="400">Permittivity ε(t)</text><path d="M41.00 175.00 L42.19 177.06 L43.38 179.05 L44.57 180.89 L45.76 182.53 L46.95 183.90 L48.14 184.95 L49.33 185.65 L50.52 185.98 L51.71 185.91 L52.90 185.46 L54.09 184.64 L55.28 183.48 L56.47 182.01 L57.66 180.30 L58.85 178.40 L60.04 176.38 L61.23 174.31 L62.42 172.26 L63.61 170.32 L64.80 168.53 L65.99 166.98 L67.18 165.71 L68.37 164.77 L69.56 164.19 L70.75 164.00 L71.94 164.19 L73.13 164.77 L74.32 165.71 L75.51 166.98 L76.70 168.53 L77.89 170.32 L79.08 172.26 L80.27 174.31 L81.46 176.38 L82.65 178.40 L83.84 180.30 L85.03 182.01 L86.22 183.48 L87.41 184.64 L88.60 185.46 L89.79 185.91 L90.98 185.98 L92.17 185.65 L93.36 184.95 L94.55 183.90 L95.74 182.53 L96.93 180.89 L98.12 179.05 L99.31 177.06 L100.50 175.00 L101.69 172.94 L102.88 170.95 L104.07 169.11 L105.26 167.47 L106.45 166.10 L107.64 165.05 L108.83 164.35 L110.02 164.02 L111.21 164.09 L112.40 164.54 L113.59 165.36 L114.78 166.52 L115.97 167.99 L117.16 169.70 L118.35 171.60 L119.54 173.62 L120.73 175.69 L121.92 177.74 L123.11 179.68 L124.30 181.47 L125.49 183.02 L126.68 184.29 L127.87 185.23 L129.06 185.81 L130.25 186.00 L131.44 185.81 L132.63 185.23 L133.82 184.29 L135.01 183.02 L136.20 181.47 L137.39 179.68 L138.58 177.74 L139.77 175.69 L140.96 173.62 L142.15 171.60 L143.34 169.70 L144.53 167.99 L145.72 166.52 L146.91 165.36 L148.10 164.54 L149.29 164.09 L150.48 164.02 L151.67 164.35 L152.86 165.05 L154.05 166.10 L155.24 167.47 L156.43 169.11 L157.62 170.95 L158.81 172.94 L160.00 175.00" stroke="#496b92" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M174 175L282 175" stroke="#496b92" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#496b92" stroke-width="2" transform="translate(282 175) rotate(0.0)"/><text x="101" y="216" font-size="14" fill="#69737b" text-anchor="middle" font-weight="400">Incident light</text><path d="M344 65l15 -8 13 21 17 -27 14 5 18 15 15 -22 13 29 16 -17 15 7 15 -10" stroke="#aa663d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M442 82L442 109" stroke="#aa663d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#aa663d" stroke-width="2" transform="translate(442 109) rotate(90.0)"/><text x="443" y="30" font-size="17" fill="#aa663d" text-anchor="middle" font-weight="400">Engineer temporal correlations</text><path d="M610 144L817 144" stroke="#496b92" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#496b92" stroke-width="3" transform="translate(817 144) rotate(0.0)"/><text x="708" y="123" font-size="15" fill="#496b92" text-anchor="middle" font-weight="400">Forward</text><path d="M813 216L618 216" stroke="#aa663d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#aa663d" stroke-width="2" transform="translate(618 216) rotate(180.0)"/><text x="709" y="245" font-size="15" fill="#aa663d" text-anchor="middle" font-weight="400">Backward</text><text x="450" y="299" font-size="14" fill="#69737b" text-anchor="middle" font-weight="400">Different regions of the modulation spectrum control the two scattering channels.</text></svg></div><figcaption>The medium has no spatial pattern. Correlated temporal modulation exchanges energy with the field and tunes forward and backward scattering. The waveform and arrow strengths are qualitative. Original explanatory drawing, not to scale. <a href="https://doi.org/10.1038/s41567-023-01962-3">Source paper</a> · <a href="../assets/figures/correlated-photonic-time-disorder.svg" target="_blank" rel="noopener">Full-size drawing ↗</a></figcaption></figure><p>This also gives a concrete inverse-design objective: shape a physically admissible correlation spectrum around Ω = 0 and Ω = 2ω<sub>b</sub>, then generate temporal realizations with those statistics. The spectrum must satisfy the constraints of a valid autocorrelation.</p></section><section class="story-section"><h2>Direction is only one consequence</h2><p>Numerical calculations test the predicted forward and backward scattering powers across ensembles of modulation sequences. The same framework links temporal order to scattering bandwidth, enabling designs for broadband scattering and resonance-free color filtering.</p><p>The result extends disorder engineering into time: useful optical responses can be encoded statistically without fabricating a spatial microstructure. The theory and simulations establish the mechanism; realizing it experimentally requires a material platform that can support the specified temporal modulation.</p></section></div>
+      <div class="paper-source"><p>Source: Full paper: abstract and results on temporal scattering, unidirectional scattering, and bandwidth engineering. <a href="../papers/natphys.pdf">Read the source paper</a>.</p><a href="../publications.html">Back to all publications</a></div>
+    </main>
+<footer><nav class="profile-links" aria-label="Professional profiles"><a href="https://scholar.google.com/citations?user=AGjDgr0AAAAJ">Google Scholar</a><a href="https://www.linkedin.com/in/jmkim93">LinkedIn</a><a href="https://orcid.org/0000-0001-8567-5338">ORCID</a></nav><span>© Jungmin Kim</span><a href="../index.html">Home</a><a href="#top">Back to top</a></footer>
+</div>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const button = document.querySelector('.theme-toggle');
+      const system = matchMedia('(prefers-color-scheme: dark)');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      function savedTheme() {
+        try { return localStorage.getItem('jm-theme'); } catch (_) { return null; }
+      }
+      function apply(theme) {
+        root.dataset.theme = theme;
+        const dark = theme === 'dark';
+        button.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+        button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        meta.content = dark ? '#1b222a' : '#506b85';
+      }
+      function sync() {
+        const saved = savedTheme();
+        apply(saved === 'light' || saved === 'dark' ? saved : (system.matches ? 'dark' : 'light'));
+      }
+      apply(root.dataset.theme);
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try { localStorage.setItem('jm-theme', next); } catch (_) {}
+      });
+      system.addEventListener('change', () => {
+        if (!['light', 'dark'].includes(savedTheme())) sync();
+      });
+      window.addEventListener('storage', event => {
+        if (event.key === 'jm-theme' || event.key === null) sync();
+      });
+      window.addEventListener('pageshow', sync);
+    })();
+  </script>
+</body></html>

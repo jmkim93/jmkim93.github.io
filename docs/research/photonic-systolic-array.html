@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="When both matrices change, storing one of them as fixed optical weights becomes a limitation. This paper instead sends both operands through a photonic array as pulse trains and accumulates the answer locally.">
+  <meta name="theme-color" content="#506b85">
+  <title>Photonic Systolic Array for All-Optical Matrix–Matrix Multiplication | Jungmin Kim</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23506b85'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia' font-size='23' fill='white'%3Ej%3C/text%3E%3C/svg%3E">
+  <script>
+    (() => {
+      let saved;
+      try { saved = localStorage.getItem('jm-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
+        ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    /* Edit these colors to make the page your own. No external files required. */
+    :root { --paper:#f6f8fa; --ink:#293440; --muted:#626f7d; --accent:#506b85; --line:#d9e1e8; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:2rem; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; font-size:16px; line-height:1.65; }
+    a { color:inherit; text-underline-offset:5px; }
+    a:hover { color:var(--accent); }
+    a:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:6px; }
+    .skip { position:absolute; left:1rem; top:-6rem; padding:.6rem 1rem; background:white; z-index:5; }
+    .skip:focus { top:1rem; }
+    .wrap { width:min(1120px,calc(100% - 96px)); margin:auto; }
+    header { display:flex; justify-content:space-between; gap:2rem; align-items:center; padding:30px 0; border-bottom:1px solid var(--line); }
+    .wordmark { font-family:Georgia,serif; font-size:1.5rem; font-weight:bold; text-decoration:none; }
+    nav { display:flex; flex-wrap:wrap; gap:28px; font-size:.9rem; }
+    nav a { text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    .hero { padding:72px 0 64px; }
+    .eyebrow { margin:0 0 26px; font-size:.8rem; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+    h1 { font-size:clamp(3rem,7.5vw,6.25rem); line-height:1.12; font-weight:500; letter-spacing:-.04em; margin:0 0 30px; }
+    h1 span { font-family:Georgia,'Times New Roman',serif; font-style:normal; color:var(--accent); letter-spacing:-.035em; }
+    .hero-bottom { display:flex; align-items:end; justify-content:space-between; gap:3rem; }
+    .intro { max-width:550px; font-size:clamp(1.15rem,2.5vw,1.5rem); line-height:1.5; margin:0; color:var(--muted); }
+    .text-link { flex-shrink:0; font-size:.95rem; }
+    section { padding:46px 0 60px; border-top:1px solid var(--line); }
+    .section-grid { display:grid; grid-template-columns:1fr 2fr; gap:48px; }
+    .label { margin:0; font-size:.9rem; font-weight:normal; }
+    .label small { margin-right:16px; font-size:.8rem; color:var(--muted); }
+    .about-text { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.5rem,3vw,2rem); line-height:1.45; margin:0 0 24px; letter-spacing:-.02em; }
+    .support { color:var(--muted); margin:0; max-width:580px; }
+    .publication { padding:25px 0; border-bottom:1px solid var(--line); }
+    .publication:first-child { padding-top:0; }
+    .pub-meta { font-size:.8rem; color:var(--accent); margin:0 0 10px; }
+    .publication h3 { font-size:1.3rem; line-height:1.4; font-weight:500; margin:0 0 10px; }
+    .publication h3 a { text-decoration:none; }
+    .publication h3 a:hover { text-decoration:underline; }
+    .authors { margin:0; color:var(--muted); font-size:.9rem; }
+    .contact { background:var(--accent); color:white; padding:54px; margin-bottom:42px; border:0; }
+    .contact .eyebrow { color:#e6eef5; margin-bottom:18px; }
+    .contact h2 { font-family:Georgia,'Times New Roman',serif; font-weight:normal; font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.1; letter-spacing:-.04em; margin:0 0 30px; }
+    .contact a { font-size:clamp(1rem,2.5vw,1.4rem); overflow-wrap:anywhere; }
+    .contact a:hover { color:white; text-decoration-thickness:3px; }
+    .contact a:focus-visible { outline-color:white; }
+    footer { display:flex; justify-content:space-between; gap:1rem; padding:0 0 30px; color:var(--muted); font-size:.8rem; }
+    @media(max-width:700px) {
+      .wrap { width:calc(100% - 40px); }
+      header { padding:22px 0; gap:16px; align-items:start; flex-direction:column; }
+      nav { gap:15px; padding-top:6px; }
+      .hero { padding:52px 0 46px; }
+      .hero-bottom { align-items:start; flex-direction:column; gap:26px; }
+      .section-grid { grid-template-columns:1fr; gap:30px; }
+      section { padding:32px 0 42px; }
+      .contact { padding:32px 24px; margin-bottom:28px; }
+      footer { flex-wrap:wrap; }
+    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  
+    .publications-hero h1 { font-size:clamp(2.6rem,6.5vw,5.5rem); letter-spacing:-.04em; overflow-wrap:normal; }
+    .publications-hero h1 span { letter-spacing:-.035em; }
+    .publications-hero .intro { font-size:1.15rem; }
+    .jump-links { display:flex; flex-wrap:wrap; gap:12px 28px; margin:30px 0 0; font-size:.9rem; }
+    nav a[aria-current="page"] { color:var(--accent); text-decoration:underline; }
+    .paper-links { display:flex; gap:22px; font-size:.85rem; margin:14px 0 0; }
+    .authors strong { font-weight:600; color:var(--ink); }
+    .publication:last-child { border-bottom:0; }
+  
+    :root { color-scheme:light; --contact-bg:#506b85; }
+    :root[data-theme="dark"] {
+      color-scheme:dark;
+      --paper:#1b222a; --ink:#e8eef4; --muted:#aebdcb;
+      --accent:#9bb8d2; --line:#374451; --contact-bg:#33485b;
+    }
+    .skip { background:var(--paper); }
+    .contact { background:var(--contact-bg); }
+    header nav { align-items:center; }
+    .theme-toggle {
+      font:inherit; font-size:.875rem; line-height:1.3; color:var(--ink);
+      background:transparent; border:1px solid var(--line); border-radius:6px;
+      min-height:44px; padding:8px 12px; cursor:pointer;
+    }
+    .theme-toggle:hover { color:var(--accent); border-color:var(--accent); }
+    .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+  
+    .theme-toggle {
+      width:36px; height:36px; min-height:36px; padding:8px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border:0; border-radius:50%; flex-shrink:0;
+    }
+    .theme-toggle[hidden] { display:none; }
+    .theme-toggle:hover { background:var(--line); }
+    .theme-toggle svg { flex-shrink:0; }
+    .theme-sun { display:none; }
+    :root[data-theme="dark"] .theme-moon { display:none; }
+    :root[data-theme="dark"] .theme-sun { display:block; }
+    footer { flex-wrap:wrap; align-items:center; }
+    .profile-links { gap:12px 22px; font-size:.875rem; }
+    @media(pointer:coarse) { .theme-toggle { width:44px; height:44px; } }
+    @media(max-width:700px) { .profile-links { flex-basis:100%; order:-1; padding:0 0 8px; } }
+  
+    .paper-main { max-width:850px; margin:0 auto; padding:44px 0 64px; }
+    .paper-back { font-size:.9rem; color:var(--muted); }
+    .paper-heading { padding:36px 0 32px; }
+    .paper-heading .eyebrow { margin-bottom:16px; }
+    .paper-heading h1 { font-size:clamp(1.9rem,3.6vw,3.15rem); line-height:1.22; letter-spacing:-.025em; font-weight:500; margin:0 0 24px; overflow-wrap:break-word; }
+    .paper-heading .authors { font-size:1rem; line-height:1.7; }
+    .paper-heading .pub-meta { font-size:.95rem; margin-top:16px; }
+    .paper-heading .paper-links { font-size:.95rem; gap:24px; }
+    .paper-lead { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.25rem,2.3vw,1.55rem); line-height:1.6; margin:0 0 36px; }
+    .paper-section { padding:28px 0; }
+    .paper-section h2 { font-size:1.3rem; font-weight:500; letter-spacing:-.015em; margin:0 0 22px; }
+    .paper-section h3 { font-size:1.05rem; line-height:1.5; margin:0 0 8px; font-weight:600; }
+    .paper-section p { font-size:1.05rem; line-height:1.8; margin:0; color:var(--muted); }
+    .finding + .finding { margin-top:24px; }
+    .paper-source { padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:.875rem; line-height:1.7; }
+    .paper-source p { margin:0 0 10px; }
+    @media(max-width:700px) {
+      .paper-main { padding:28px 0 44px; }
+      .paper-heading { padding:28px 0; }
+      .paper-section { padding:24px 0; }
+    }
+  
+  
+    .paper-figure { margin:0 0 44px; padding-top:28px; border-top:1px solid var(--line); }
+    .paper-figure h2 { font-family:Georgia,serif; font-weight:normal; font-size:1.55rem; line-height:1.35; margin:0 0 20px; }
+    .paper-figure .figure-image { display:block; padding:16px; background:#fff; border:1px solid var(--line); border-radius:4px; }
+    .paper-figure img { display:block; width:100%; height:auto; max-height:690px; object-fit:contain; }
+    .paper-figure figcaption { margin:14px 0 22px; font-size:.87rem; color:var(--muted); line-height:1.6; }
+    .figure-guide { display:grid; grid-template-columns:1fr; gap:16px; }
+    .figure-guide p { margin:0; font-size:.98rem; line-height:1.65; }
+    .figure-guide strong { display:block; color:var(--ink); font-weight:600; margin-bottom:3px; }
+    .figure-open { display:inline-block; margin-top:8px; }
+    @media(max-width:700px) { .paper-figure .figure-image { padding:8px; } }
+  
+    .paper-figure .figure-image { padding:0; border:0; background:transparent; }
+    .drawing-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:#fff; }
+    .drawing-scroll svg { display:block; width:100%; min-width:680px; height:auto; }
+    .drawing-hint { font-size:.8rem; color:var(--muted); margin:8px 0 0; }
+  
+    .paper-figure .figure-image { padding:0; border:0; background:transparent; }
+    .drawing-scroll { overflow-x:auto; border:1px solid var(--line); border-radius:6px; background:#fff; }
+    .drawing-scroll svg { display:block; width:100%; min-width:680px; height:auto; }
+    .drawing-hint { font-size:.8rem; color:var(--muted); margin:8px 0 0; }
+  
+    .math-section h3 { margin-top:26px; }
+    .math-section h3:first-of-type { margin-top:0; }
+    .math-section p + p { margin-top:15px; }
+    .equation { overflow-x:auto; padding:20px 22px; margin:20px 0; border-left:2px solid var(--accent); background:color-mix(in srgb,var(--accent) 6%,var(--paper)); font-family:Georgia,'Times New Roman',serif; font-size:1.15rem; line-height:1.8; white-space:nowrap; }
+    .fraction { display:inline-flex; vertical-align:middle; flex-direction:column; text-align:center; line-height:1.5; margin:0 .2em; }
+    .fraction > span:first-child { border-bottom:1px solid currentColor; padding:0 .25em; }
+    .matrix { display:inline-flex; vertical-align:middle; flex-direction:column; border-left:1px solid currentColor; border-right:1px solid currentColor; padding:3px 12px; }
+    .matrix-row { display:grid; grid-template-columns:repeat(3,minmax(82px,1fr)); gap:12px; text-align:center; }
+  
+    .equation { font-family:inherit; font-size:1rem; white-space:normal; padding:22px 20px; }
+    .equation .katex-display { margin:0; text-align:left; }
+    .equation .katex-display > .katex { text-align:left; }
+    @media(max-width:600px) { .equation { font-size:.9rem; padding:18px 14px; } }
+  
+    .article-story .story-section { padding:24px 0 12px; border-top:0; }
+    .article-story .story-section:first-child { padding-top:0; }
+    .article-story h2 { font-size:1.4rem; font-weight:500; letter-spacing:-.015em; line-height:1.35; margin:0 0 20px; }
+    .article-story p { font-size:1.05rem; line-height:1.85; color:var(--muted); margin:0 0 20px; }
+    .article-story strong { color:var(--ink); font-weight:600; }
+    .article-story .paper-figure { margin:30px 0; padding:0; border:0; }
+    .article-story figcaption { font-size:.86rem; line-height:1.65; }
+    .research-note { border-left:2px solid var(--accent); padding:8px 0 8px 20px; margin:24px 0; color:var(--muted); font-size:1rem; line-height:1.7; }
+    .article-story .equation { margin:24px 0; }
+    .paper-source { margin-top:34px; }
+  </style>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+</head>
+<!-- Summary source: https://doi.org/10.1002/lpor.202501995 -->
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header><a class="wordmark" href="../index.html">Jungmin Kim</a>
+<nav aria-label="Main navigation"><a href="../index.html#about">About</a><a href="../publications.html" aria-current="page">Publications</a><a href="../cv.pdf">CV</a><a href="../index.html#contact">Contact</a><button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
+          <svg class="theme-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13a8.5 8.5 0 0 1-9.5-9.5A8.5 8.5 0 1 0 20.5 13Z"/></svg>
+          <svg class="theme-sun" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button></nav></header>
+<main id="main" class="paper-main">
+      <a class="paper-back" href="../publications.html">All publications</a>
+      <div class="paper-heading">
+        <p class="eyebrow">Research article</p>
+        <h1>Photonic Systolic Array for All-Optical Matrix–Matrix Multiplication</h1>
+        <p class="authors"><strong>Jungmin Kim</strong>, Qingyi Zhou, Zongfu Yu</p>
+        <p class="pub-meta">Laser &amp; Photonics Reviews 20, e01995 (2026)</p>
+        <nav class="paper-links" aria-label="Read the original paper"><a href="https://doi.org/10.1002/lpor.202501995">Publisher page</a><a href="../papers/lpr.pdf">Read PDF</a></nav>
+      </div>
+      <p class="paper-lead">When both matrices change, storing one of them as fixed optical weights becomes a limitation. This paper instead sends both operands through a photonic array as pulse trains and accumulates the answer locally.</p>
+<div class="article-story"><section class="story-section"><h2>A matrix product with two moving operands</h2><p>Many photonic processors encode an input in light and keep a weight matrix in device settings. That arrangement is well suited to repeated multiplication by the same weights. Products between two changing inputs—such as those used in attention—motivate a different dataflow.</p><p>Here, columns of the two matrices become synchronized optical signals. In the paper’s indexing convention, each output cell computes</p><div class="equation" role="math" aria-label="The matrix output is A transpose times B."><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub><mo>=</mo><munder><mo>∑</mo><mi>k</mi></munder><msub><mi>A</mi><mrow><mi>k</mi><mi>m</mi></mrow></msub><msub><mi>B</mi><mrow><mi>k</mi><mi>n</mi></mrow></msub><mo separator="true">,</mo><mspace width="2em"/><mi>C</mi><mo>=</mo><msup><mi>A</mi><mi mathvariant="sans-serif">T</mi></msup><mi>B</mi></mrow><annotation encoding="application/x-tex">C_{mn}=\sum_k A_{km}B_{kn},\qquad C=A^{\mathsf T}B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">mn</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3521em;vertical-align:-1.3021em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8479em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3021em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">km</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0502em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">kn</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8991em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathsf mtight">T</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span></div><p>The transpose reflects how the input vectors are arranged, rather than a different arithmetic operation. One output entry stays at each cell while successive pulses supply the terms in its inner product.</p></section><figure class="paper-figure"><div class="drawing-scroll" tabindex="0" role="region" aria-label="Scientific schematic; horizontally scrollable on small screens"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 355" role="img" aria-labelledby="drawing-title drawing-desc" font-family="Arial,Helvetica,sans-serif"><title id="drawing-title">Orthogonal inputs and temporal accumulation</title><desc id="drawing-desc">Two synchronized optical inputs enter through perpendicular waveguides. Balanced detection produces their product; temporal integration yields one entry of C = AᵀB. Routing inside the cell is schematic.</desc><rect width="900" height="355" fill="white"/><text x="48" y="45" font-size="17" fill="#30383e" text-anchor="start" font-weight="600">Orthogonal optical inputs</text><path d="M57 146h12v-15h10v15h15v-23h10v23h15v-10h10v10h12" stroke="#aa663d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="177" y="139" font-size="16" fill="#aa663d" text-anchor="start" font-weight="400">Bₙ(t)</text><path d="M240 141L331 141" stroke="#aa663d" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#aa663d" stroke-width="2.5" transform="translate(331 141) rotate(0.0)"/><rect x="334" y="96" width="175" height="94" rx="6" fill="#f0edf4" stroke="#827097" stroke-width="1.4"/><text x="421" y="132" font-size="16" fill="#827097" text-anchor="middle" font-weight="400">Mix + balanced</text><text x="421" y="157" font-size="16" fill="#827097" text-anchor="middle" font-weight="400">detection</text><path d="M421 292v-10h-12v-10h12v-10h-20v-10h20v-12" stroke="#496b92" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M421 230L421 191" stroke="#496b92" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#496b92" stroke-width="2.5" transform="translate(421 191) rotate(-90.0)"/><text x="445" y="265" font-size="16" fill="#496b92" text-anchor="start" font-weight="400">Aₘ(t)</text><path d="M519 142L563 142" stroke="#30383e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#30383e" stroke-width="2" transform="translate(563 142) rotate(0.0)"/><rect x="577" y="101" width="122" height="82" rx="6" fill="#edf2f8" stroke="#496b92" stroke-width="1.4"/><text x="638.0" y="147.0" font-size="15" fill="#30383e" text-anchor="middle" font-weight="400">∫ dt</text><path d="M710 142L759 142" stroke="#30383e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M-7 -4L0 0L-7 4" fill="none" stroke="#30383e" stroke-width="2" transform="translate(759 142) rotate(0.0)"/><rect x="773" y="112" width="83" height="61" rx="6" fill="white" stroke="#d8dde0" stroke-width="1.4"/><text x="814.5" y="147.5" font-size="15" fill="#30383e" text-anchor="middle" font-weight="400">Cₘₙ</text><text x="641" y="221" font-size="14" fill="#69737b" text-anchor="middle" font-weight="400">Accumulate in time</text><text x="450" y="332" font-size="17" fill="#496b92" text-anchor="middle" font-weight="400">ΔI ∝ Aₘ(t)Bₙ(t)    →    Cₘₙ = Σₖ AₖₘBₖₙ</text></svg></div><figcaption>Each cell mixes two optical inputs, reads their product by balanced detection, and integrates it over time. Repeating this operation across the array gives C = AᵀB, using the paper’s convention. Original explanatory drawing, not to scale. <a href="https://doi.org/10.1002/lpor.202501995">Source paper</a> · <a href="../assets/figures/photonic-systolic-array.svg" target="_blank" rel="noopener">Full-size drawing ↗</a></figcaption></figure><section class="story-section"><h2>Interference supplies the product; detection supplies the sum</h2><p>The two inputs enter a cell through perpendicular waveguides. A crossing and indexed branches distribute them through the array while tapping a portion toward a 50:50 beam splitter. The branch ratios and phases matter: each cell must receive the intended signal amplitudes and relative phase.</p><p>For real amplitudes <i>a</i> and <i>b</i>, with the specified phase relation, subtracting the two output intensities removes the individual intensity terms and leaves</p><div class="equation" role="math" aria-label="The balanced intensity difference equals minus two a b."><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>I</mi><mo>=</mo><mi mathvariant="normal">∣</mi><msub><mi>o</mi><mn>1</mn></msub><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup><mo>−</mo><mi mathvariant="normal">∣</mi><msub><mi>o</mi><mn>2</mn></msub><msup><mi mathvariant="normal">∣</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>2</mn><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">\Delta I=|o_1|^2-|o_2|^2=-2ab</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">2</span><span class="mord mathnormal">ab</span></span></span></span></span></div><p>Photodetectors convert this difference into charge. Integrating over synchronized pulses adds the products in time, giving the desired inner product after calibration of the known sign and scale factors. Although the operands travel optically, accumulation and readout use photodetection.</p></section><section class="story-section"><h2>Making the array compact enough to matter</h2><p>Adjoint optimization designs the crossings, branches, and beam splitters for compactness, power distribution, and phase matching. Full-wave simulations test a 4 × 4 vector outer product and matrix multiplication in a 2 × 2 array, so the work examines operation beyond a single isolated multiplier.</p><aside class="research-note"><strong>Reported design estimate:</strong> 4.4 PMACs mm⁻² s⁻¹, calculated from simulated cell area and allowable pulse spacing.</aside><p>This is a theoretical computing-density estimate for a numerical design. Practical throughput also depends on pulse generation and modulation, loss, and readout. The contribution is the architecture and its optical implementation strategy; a fabricated processor is not demonstrated.</p></section></div>
+      <div class="paper-source"><p>Source: Full paper: abstract, Figures 4–5, and Discussion. <a href="../papers/lpr.pdf">Read the source paper</a>.</p><a href="../publications.html">Back to all publications</a></div>
+    </main>
+<footer><nav class="profile-links" aria-label="Professional profiles"><a href="https://scholar.google.com/citations?user=AGjDgr0AAAAJ">Google Scholar</a><a href="https://www.linkedin.com/in/jmkim93">LinkedIn</a><a href="https://orcid.org/0000-0001-8567-5338">ORCID</a></nav><span>© Jungmin Kim</span><a href="../index.html">Home</a><a href="#top">Back to top</a></footer>
+</div>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const button = document.querySelector('.theme-toggle');
+      const system = matchMedia('(prefers-color-scheme: dark)');
+      const meta = document.querySelector('meta[name="theme-color"]');
+      function savedTheme() {
+        try { return localStorage.getItem('jm-theme'); } catch (_) { return null; }
+      }
+      function apply(theme) {
+        root.dataset.theme = theme;
+        const dark = theme === 'dark';
+        button.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+        button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        meta.content = dark ? '#1b222a' : '#506b85';
+      }
+      function sync() {
+        const saved = savedTheme();
+        apply(saved === 'light' || saved === 'dark' ? saved : (system.matches ? 'dark' : 'light'));
+      }
+      apply(root.dataset.theme);
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try { localStorage.setItem('jm-theme', next); } catch (_) {}
+      });
+      system.addEventListener('change', () => {
+        if (!['light', 'dark'].includes(savedTheme())) sync();
+      });
+      window.addEventListener('storage', event => {
+        if (event.key === 'jm-theme' || event.key === null) sync();
+      });
+      window.addEventListener('pageshow', sync);
+    })();
+  </script>
+</body></html>
