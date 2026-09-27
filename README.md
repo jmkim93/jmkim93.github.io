@@ -33,7 +33,7 @@ Other old Hugo pages, posts, tags, archives, and miscellaneous pages are not inc
 
 ## Editing and appearance
 
-Open `docs/index.html` in a browser. Edit text and embedded styling in the two HTML files. Each page includes its own CSS. Apply site-wide style changes to the homepage, publication list, and pages in `docs/research`. Original research article titles in the full list open summaries. Review, conference, and dissertation titles retain their original external links.
+Open `docs/index.html` in a browser. Edit text and embedded styling in the two HTML files. Each page includes its own CSS. Apply site-wide style changes to the homepage, publication list, and pages in `docs/research`. Original research article titles in the full list are currently unlinked; the separate summary pages remain available in `docs/research`. Review, conference, and dissertation titles retain their original external links.
 
 The design uses neutral warm-gray accents with restrained serif headings. The sun/moon icon switches between light and dark modes. The site initially follows the system preference and remembers a chosen theme across pages when hosted. Local file previews may store preferences separately for each file.
 
